@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import NavLink from './NavLink';
-import { Link } from 'react-router-dom';
+// import NavLink from './NavLink';
+import { Link, NavLink } from 'react-router-dom';
 import classnames from 'classnames';
 import { twMerge } from 'tailwind-merge';
 
@@ -15,6 +15,12 @@ const Navbar: FC<NavbarProps> = ({ className }) => {
 			className
 		)
 	);
+	const getNavLinkClasses = ({ isActive }: { isActive: boolean }): string => {
+		return `${navLinkClasses} ${isActive && 'underline'}`;
+	};
+
+	const navLinkClasses =
+		'font-semibold text-xl hover:text-blue-500 hover:underline';
 
 	return (
 		<header className={classes}>
@@ -22,14 +28,18 @@ const Navbar: FC<NavbarProps> = ({ className }) => {
 				<Link to="/">
 					<img
 						className="w-36"
-						src="../../public/images/VanlifeLogo.png"
+						src="images/Vanlife-Logo.png"
 						alt="logo"
 					/>
 				</Link>
 			</section>
 			<nav className="flex justify-around w-1/3">
-				<NavLink to="/about">About</NavLink>
-				<NavLink to="/Vans">Vans</NavLink>
+				<NavLink to="/about" className={getNavLinkClasses}>
+					About
+				</NavLink>
+				<NavLink to="/Vans" className={getNavLinkClasses}>
+					Vans
+				</NavLink>
 			</nav>
 		</header>
 	);

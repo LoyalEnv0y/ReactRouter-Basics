@@ -3,10 +3,12 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 const Home = () => {
+	// TODO: Give header and footer flex-none to avoid them shrinking or growing
+
 	return (
 		<div className="h-screen flex flex-col">
 			<Header />
-			<main className='bg-[url("../../public/images/mountainBackground.png")] bg-cover bg-no-repeat bg-center flex justify-center items-center flex-1'>
+			<main className='bg-[url("images/Mountain-Background.png")] bg-cover bg-no-repeat bg-center flex justify-center items-center flex-1'>
 				<div className=" h-1/2 flex flex-col items-center text-white px-10">
 					<h1 className="text-5xl font-bold mb-8">
 						You got travel plans, we got the travel vans.

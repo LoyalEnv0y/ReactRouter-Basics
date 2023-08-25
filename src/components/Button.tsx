@@ -23,6 +23,7 @@ const cornersMap = new Map([
 interface ButtonProps {
 	color?: color;
 	corner?: corners;
+	border?: boolean;
 	classNames?: string;
 	children?: ReactNode;
 	onClick?: () => void;
@@ -31,6 +32,7 @@ interface ButtonProps {
 const Button: FC<ButtonProps> = ({
 	color,
 	corner,
+	border,
 	classNames,
 	children,
 	onClick,
@@ -38,27 +40,29 @@ const Button: FC<ButtonProps> = ({
 	// TODO: Instead of writing [3px] for border here, add a 3px option in tailwind config.
 	const classes = twMerge(
 		classnames(
-			'border-[3px] border-zinc-400 bg-white text-black px-3 py-1 font-semibold rounded shadow-md m-1',
+			'bg-white text-black px-2 py-1 font-semibold rounded shadow-md m-1',
 			'hover:shadow-zinc-600',
 			'active:scale-95',
 			cornersMap.get(corner!),
 			classNames,
 			{
 				'text-stone-100': color,
-				'bg-sky-600 border-sky-500 hover:shadow-sky-900':
-					color === 'primary',
-				'bg-zinc-700 border-zinc-600 hover:shadow-zinc-600':
-					color === 'secondary',
-				'bg-orange-400 border-orange-600 hover:shadow-orange-900':
-					color === 'tertiary',
-				'bg-green-600 border-green-500 hover:shadow-green-900':
-					color === 'success',
-				'bg-yellow-400 text-zinc-800 border-yellow-500 hover:shadow-yellow-700':
-					color === 'warning',
-				'bg-red-600 border-red-500 hover:shadow-red-700':
-					color === 'danger',
-				'bg-neutral-900 border-neutral-800 hover:shadow-neutral-800':
-					color === 'dark',
+				'bg-primary hover:shadow-sky-900': color === 'primary',
+				'bg-secondary hover:shadow-zinc-600': color === 'secondary',
+				'bg-tertiary hover:shadow-orange-900': color === 'tertiary',
+				'bg-success hover:shadow-green-900': color === 'success',
+				'bg-warning hover:shadow-yellow-700': color === 'warning',
+				'bg-danger hover:shadow-red-700': color === 'danger',
+				'bg-dark hover:shadow-neutral-800': color === 'dark',
+
+				'border-[3px] border-zinc-400': border,
+				'border-sky-500': border && color === 'primary',
+				'border-zinc-600': border && color === 'secondary',
+				'border-orange-600': border && color === 'tertiary',
+				'border-green-500': border && color === 'success',
+				'border-yellow-500': border && color === 'warning',
+				'border-red-500': border && color === 'danger',
+				'border-neutral-800': border && color === 'dark',
 			}
 		)
 	);

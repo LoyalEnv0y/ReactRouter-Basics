@@ -1,5 +1,4 @@
 import { FC } from 'react';
-// import NavLink from './NavLink';
 import { Link, NavLink } from 'react-router-dom';
 import classnames from 'classnames';
 import { twMerge } from 'tailwind-merge';

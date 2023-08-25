@@ -20,5 +20,3 @@ export default {
   },
   plugins: [],
 };
-
-// #f97316

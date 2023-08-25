@@ -1,7 +1,7 @@
 import Button from '../components/Button';
 import Footer from '../components/Footer';
 import Navbar from '../components/Header';
-// 500
+
 const About = () => {
 	return (
 		<div className="h-screen flex flex-col sm:items-center">

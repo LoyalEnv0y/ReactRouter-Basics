@@ -12,8 +12,9 @@ const Home = () => {
 						You got travel plans, we got the travel vans.
 					</h1>
 
-					<p className="mb-16 text-lg">
+					<p className="text-lg mb-16 self-start">
 						Add adventure to your life by joining the #vanlife movement.
+						<br />
 						Rent the perfect van to make your perfect road trip.
 					</p>
 

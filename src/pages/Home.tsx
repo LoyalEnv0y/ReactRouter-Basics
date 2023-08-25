@@ -21,40 +21,6 @@ const Home = () => {
 					<Button color="tertiary" classNames="border-none w-full h-12">
 						Find Your Van
 					</Button>
-
-					<div>
-						<Button>Default</Button>
-						<Button color="primary">Primary</Button>
-						<Button color="secondary">Secondary</Button>
-						<Button color="tertiary">Tertiary</Button>
-						<Button color="success">Success</Button>
-						<Button color="warning">Warning</Button>
-						<Button color="danger">Danger</Button>
-						<Button color="dark">Dark</Button>
-						<br />
-						<Button border>Default</Button>
-						<Button color="primary" border={true}>
-							Primary
-						</Button>
-						<Button color="secondary" border={true}>
-							Secondary
-						</Button>
-						<Button color="tertiary" border={true}>
-							Tertiary
-						</Button>
-						<Button color="success" border={true}>
-							Success
-						</Button>
-						<Button color="warning" border={true}>
-							Warning
-						</Button>
-						<Button color="danger" border={true}>
-							Danger
-						</Button>
-						<Button color="dark" border={true}>
-							Dark
-						</Button>
-					</div>
 				</div>
 			</main>
 			<Footer className="flex-none" />

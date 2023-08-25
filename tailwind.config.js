@@ -10,9 +10,9 @@ export default {
       colors: {
         primary: '#0284c7',
         secondary: '#3f3f46',
-        tertiary: '#fb923c',
+        tertiary: '#f97316',
         success: '#16a34a',
-        warning: '#facc15',
+        warning: '#E0A801',
         danger: '#dc2626',
         dark: '#171717'
       }

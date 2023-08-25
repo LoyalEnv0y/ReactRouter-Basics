@@ -1,3 +1,4 @@
+import Button from '../components/Button';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
@@ -16,7 +17,9 @@ const Home = () => {
 						Rent the perfect van to make your perfect road trip.
 					</p>
 
-					<button>Find Your Van</button>
+					<Button color="tertiary" classNames="border-none w-full h-12">
+						Find Your Van
+					</Button>
 				</div>
 			</main>
 			<Footer className="h-[10%]" />

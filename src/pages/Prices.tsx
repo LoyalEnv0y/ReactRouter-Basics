@@ -1,5 +1,12 @@
+import Navbar from '../components/NavBar';
+
 const Prices = () => {
-	return <div>Prices</div>;
-}
+	return (
+		<>
+			<Navbar />
+			<h1>Prices Page!</h1>
+		</>
+	);
+};
 
 export default Prices;

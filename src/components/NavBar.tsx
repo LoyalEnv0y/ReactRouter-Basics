@@ -1,5 +1,16 @@
-const NavBar = () => {
-	return <p>Hello world!</p>;
+import NavLink from './NavLink';
+
+
+const Navbar = () => {
+
+	return (
+		<nav className="w-full flex justify-between">
+			<NavLink to="/">Home</NavLink>
+			<NavLink to="/about">About</NavLink>
+			<NavLink to="/contact">Contact</NavLink>
+			<NavLink to="/prices">Prices</NavLink>
+		</nav>
+	);
 };
 
-export default NavBar;
+export default Navbar;

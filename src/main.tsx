@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import About from './pages/About.tsx';
-import Contact from './pages/Contact.tsx';
-import Prices from './pages/Prices.tsx';
-import Home from './pages/Home.tsx';
+import About from './pages/About.js';
+import Contact from './pages/Contact.js';
+import Prices from './pages/Prices.js';
+import Home from './pages/Home.js';
 
-import './styles/index.css';
+import '../public/styles/index.css';
 
 /*
 	-------------------------------------- 🌐 --------------------------------------

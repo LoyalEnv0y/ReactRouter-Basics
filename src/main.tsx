@@ -6,6 +6,8 @@ import Contact from './pages/Contact.tsx';
 import Prices from './pages/Prices.tsx';
 import Home from './pages/Home.tsx';
 
+import './styles/index.css';
+
 /*
 	-------------------------------------- 🌐 --------------------------------------
 	BrowserRoute is a top level provider that parses all the routes.
@@ -17,7 +19,6 @@ import Home from './pages/Home.tsx';
 	Route is the ultimate way of showing different pages. the path prop defines
 	where the route will go to and the element prop defines what to show.
 */
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<BrowserRouter>

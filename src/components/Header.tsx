@@ -11,7 +11,7 @@ interface NavbarProps {
 const Navbar: FC<NavbarProps> = ({ className }) => {
 	const classes = twMerge(
 		classnames(
-			'w-full h-12 flex justify-evenly items-center bg-orange-50',
+			'w-full h-28 flex justify-evenly items-center bg-orange-50',
 			className
 		)
 	);

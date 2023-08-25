@@ -9,7 +9,7 @@ interface FooterProps {
 
 const Footer: FC<FooterProps> = ({ className }) => {
 	const classes = twMerge(
-		'w-full bg-neutral-800 text-gray-400 flex justify-evenly items-center',
+		'w-full h-20 bg-neutral-800 text-gray-400 flex justify-evenly items-center',
 		classnames(className)
 	);
 

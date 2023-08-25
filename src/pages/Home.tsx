@@ -4,9 +4,9 @@ import Header from '../components/Header';
 
 const Home = () => {
 	return (
-		<div className="h-screen">
-			<Header className="h-[13%]" />
-			<main className='bg-[url("../../public/images/mountainBackground.png")] h-[77%] bg-cover bg-no-repeat bg-center flex justify-center items-center'>
+		<div className="h-screen flex flex-col">
+			<Header />
+			<main className='bg-[url("../../public/images/mountainBackground.png")] bg-cover bg-no-repeat bg-center flex justify-center items-center flex-1'>
 				<div className=" h-1/2 flex flex-col items-center text-white px-10">
 					<h1 className="text-5xl font-bold mb-8">
 						You got travel plans, we got the travel vans.
@@ -23,7 +23,7 @@ const Home = () => {
 					</Button>
 				</div>
 			</main>
-			<Footer className="h-[10%]" />
+			<Footer />
 		</div>
 	);
 };

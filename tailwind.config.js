@@ -15,6 +15,10 @@ export default {
         warning: '#E0A801',
         danger: '#dc2626',
         dark: '#171717'
+      },
+
+      borderWidth: {
+        '3': '3px'
       }
     },
   },

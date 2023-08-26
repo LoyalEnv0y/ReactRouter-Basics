@@ -37,7 +37,6 @@ const Button: FC<ButtonProps> = ({
 	children,
 	onClick,
 }) => {
-	// TODO: Instead of writing [3px] for border here, add a 3px option in tailwind config.
 	const classes = twMerge(
 		classnames(
 			'bg-white text-black px-2 py-1 font-semibold rounded shadow-md m-1',
@@ -55,7 +54,7 @@ const Button: FC<ButtonProps> = ({
 				'bg-danger hover:shadow-red-700': color === 'danger',
 				'bg-dark hover:shadow-neutral-800': color === 'dark',
 
-				'border-[3px] border-zinc-400': border,
+				'border-3 border-zinc-400': border,
 				'border-sky-500': border && color === 'primary',
 				'border-zinc-600': border && color === 'secondary',
 				'border-orange-600': border && color === 'tertiary',

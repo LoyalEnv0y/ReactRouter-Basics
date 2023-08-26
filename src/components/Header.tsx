@@ -15,11 +15,10 @@ const Header: FC<HeaderProps> = ({ className }) => {
 		)
 	);
 	const getNavLinkClasses = ({ isActive }: { isActive: boolean }): string => {
+		const navLinkClasses =
+			'font-semibold text-xl hover:text-blue-500 hover:underline';
 		return `${navLinkClasses} ${isActive && 'underline'}`;
 	};
-
-	const navLinkClasses =
-		'font-semibold text-xl hover:text-blue-500 hover:underline';
 
 	return (
 		<header className={classes}>

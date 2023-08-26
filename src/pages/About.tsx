@@ -1,11 +1,11 @@
 import Button from '../components/Button';
 import Footer from '../components/Footer';
-import Navbar from '../components/Header';
+import Header from '../components/Header';
 
 const About = () => {
 	return (
 		<div className="flex h-screen flex-col sm:items-center">
-			<Navbar className="flex-none" />
+			<Header className="flex-none" />
 			<main className="flex-1 sm:w-[500px]">
 				<img
 					src="images/Night-Sky-Caravan.png"

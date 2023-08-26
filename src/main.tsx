@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import About from './pages/About.js';
-import Contact from './pages/Contact.js';
-import Prices from './pages/Prices.js';
 import Home from './pages/Home.js';
+import About from './pages/About.js';
+import Vans from './pages/Vans.js';
 
 import '../public/styles/index.css';
 
@@ -25,8 +24,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/about" element={<About />} />
-				<Route path="/contact" element={<Contact />} />
-				<Route path="/prices" element={<Prices />} />
+				<Route path="/vans" element={<Vans />} />
 			</Routes>
 		</BrowserRouter>
 	</React.StrictMode>

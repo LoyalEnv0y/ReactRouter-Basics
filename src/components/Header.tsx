@@ -3,11 +3,11 @@ import { Link, NavLink } from 'react-router-dom';
 import classnames from 'classnames';
 import { twMerge } from 'tailwind-merge';
 
-interface NavbarProps {
+interface HeaderProps {
 	className?: string;
 }
 
-const Navbar: FC<NavbarProps> = ({ className }) => {
+const Header: FC<HeaderProps> = ({ className }) => {
 	const classes = twMerge(
 		classnames(
 			'w-full h-28 flex justify-evenly items-center bg-orange-50',
@@ -44,4 +44,4 @@ const Navbar: FC<NavbarProps> = ({ className }) => {
 	);
 };
 
-export default Navbar;
+export default Header;

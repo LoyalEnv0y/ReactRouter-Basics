@@ -6,7 +6,7 @@ const Home = () => {
 	return (
 		<div className="flex h-screen flex-col">
 			<Header className="flex-none" />
-			<main className='flex flex-1 items-center justify-center bg-[url("images/Mountain-Background.png")] bg-cover bg-center bg-no-repeat'>
+			<main className='flex flex-1 items-center justify-center bg-[url("../../public/images/Mountain-Background.png")] bg-cover bg-center bg-no-repeat'>
 				<div className=" flex h-1/2 flex-col items-center px-10 text-white">
 					<h1 className="mb-8 text-5xl font-bold">
 						You got travel plans, we got the travel vans.

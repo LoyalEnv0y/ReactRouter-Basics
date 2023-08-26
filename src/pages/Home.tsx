@@ -4,15 +4,15 @@ import Header from '../components/Header';
 
 const Home = () => {
 	return (
-		<div className="h-screen flex flex-col">
+		<div className="flex h-screen flex-col">
 			<Header className="flex-none" />
-			<main className='bg-[url("images/Mountain-Background.png")] bg-cover bg-no-repeat bg-center flex justify-center items-center flex-1'>
-				<div className=" h-1/2 flex flex-col items-center text-white px-10">
-					<h1 className="text-5xl font-bold mb-8">
+			<main className='flex flex-1 items-center justify-center bg-[url("images/Mountain-Background.png")] bg-cover bg-center bg-no-repeat'>
+				<div className=" flex h-1/2 flex-col items-center px-10 text-white">
+					<h1 className="mb-8 text-5xl font-bold">
 						You got travel plans, we got the travel vans.
 					</h1>
 
-					<p className="text-lg mb-16 self-start">
+					<p className="mb-16 self-start text-lg">
 						Add adventure to your life by joining the #vanlife movement.
 						<br />
 						Rent the perfect van to make your perfect road trip.

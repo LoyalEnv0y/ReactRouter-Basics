@@ -15,7 +15,7 @@ const Footer: FC<FooterProps> = ({ className }) => {
 
 	return (
 		<footer className={classes}>
-			<section className='flex items-center gap-1'>
+			<section className="flex items-center gap-1">
 				<span>
 					<CopyrightIcon />
 				</span>

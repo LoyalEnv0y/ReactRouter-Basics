@@ -32,7 +32,7 @@ const Navbar: FC<NavbarProps> = ({ className }) => {
 					/>
 				</Link>
 			</section>
-			<nav className="flex justify-around w-1/3">
+			<nav className="flex w-1/3 justify-around">
 				<NavLink to="/about" className={getNavLinkClasses}>
 					About
 				</NavLink>

@@ -17,7 +17,7 @@ interface ButtonProps {
 	color?: color;
 	corner?: corners;
 	border?: boolean;
-	disabled: boolean;
+	disabled?: boolean;
 	classNames?: string;
 	children?: ReactNode;
 	onClick?: () => void;

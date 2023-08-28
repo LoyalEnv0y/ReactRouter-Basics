@@ -127,7 +127,7 @@ const Vans = () => {
 								/>
 
 								<div className="flex justify-between">
-									<div className="w-3/4">
+									<div className="w-3/4 h-24 flex flex-col justify-between">
 										<h1 className="mb-1 text-lg font-semibold">
 											{van.name}
 										</h1>
@@ -136,7 +136,7 @@ const Vans = () => {
 											color={getColorOfType(van.type)}
 											corner="roundedMD"
 											disabled
-											classNames="px-3">
+											classNames="w-24">
 											{van.type.charAt(0).toUpperCase() +
 												van.type.slice(1)}
 										</Button>

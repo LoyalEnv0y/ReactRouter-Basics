@@ -6,6 +6,7 @@ import About from './pages/About.js';
 import Vans from './pages/Vans.js';
 
 import '../public/styles/index.css';
+import './mockServer.js';
 
 /*
 	-------------------------------------- 🌐 --------------------------------------

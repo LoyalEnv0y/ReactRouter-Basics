@@ -28,7 +28,7 @@ interface ButtonProps {
 	children?: ReactNode;
 	onClick?: () => void;
 }
-
+// TODO: Instead of getting onClick, find a way to replicate ...rest usage of JS with types.
 const Button: FC<ButtonProps> = ({
 	color,
 	corner,

@@ -4,7 +4,7 @@ import Header from '../components/Header';
 
 const About = () => {
 	return (
-		<div className="flex min-h-screen flex-col items-center">
+		<div className="flex min-h-screen flex-col items-center bg-orange-50">
 			<Header className="flex-none" />
 			<main className="flex flex-1 flex-col sm:w-[500px]">
 				<img
@@ -13,7 +13,7 @@ const About = () => {
 					className="sm:w-[500px]"
 				/>
 
-				<section className="flex grow flex-col justify-between bg-pink-50 px-8">
+				<section className="flex grow flex-col justify-between px-8">
 					<h1 className="my-4 text-2xl font-bold sm:text-3xl">
 						Don't squeeze in a sedan when you could relax in a van.
 					</h1>

@@ -19,6 +19,10 @@ export default {
 
       fontFamily: {
         'inter': ['Inter', 'sans-serif']
+      },
+
+      scale: {
+        '97': '0.97'
       }
     },
   },

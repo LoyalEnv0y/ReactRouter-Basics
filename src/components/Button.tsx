@@ -35,7 +35,7 @@ const Button: FC<ButtonProps> = ({
 	const classes = twMerge(
 		classnames(
 			'bg-[#ffe1bc] text-black px-5 py-1 rounded',
-			'active:scale-[97%]',
+			'active:scale-97',
 			cornersMap.get(corner!),
 			classNames,
 			{

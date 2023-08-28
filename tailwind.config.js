@@ -19,6 +19,10 @@ export default {
 
       borderWidth: {
         '3': '3px'
+      },
+
+      fontFamily: {
+        'inter': ['Inter', 'sans-serif']
       }
     },
   },

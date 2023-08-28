@@ -19,14 +19,14 @@ const initialFilters = [
 		id: uuid(),
 		name: 'simple',
 		active: false,
-		color: 'bg-orange-500',
+		color: 'primary',
 	},
-	{ id: uuid(), name: 'luxury', active: false, color: 'bg-black' },
+	{ id: uuid(), name: 'luxury', active: false, color: 'tertiary' },
 	{
 		id: uuid(),
 		name: 'rugged',
 		active: false,
-		color: 'bg-green-900',
+		color: 'secondary',
 	},
 ];
 
@@ -59,19 +59,28 @@ const Vans = () => {
 		);
 	};
 
-	const constructFilterButtons = () => {
-		const buttonBaseClasses =
-			'px-5 py-1 font-normal text-sm font-inter tracking-wide bg-orange-200 hover:text-white first:ml-0 last:mr-4';
+	const clearFilters = () => {
+		setFilters(filters.map((filter) => ({ ...filter, active: false })));
+	};
 
+	const getColorOfType = (
+		type: 'simple' | 'luxury' | 'rugged'
+	): 'primary' | 'secondary' | 'tertiary' => {
+		if (type === 'simple') return 'primary';
+		if (type === 'rugged') return 'secondary';
+		return 'tertiary';
+	};
+
+	const constructFilterButtons = () => {
 		const buttons = (
 			<div className="flex flex-wrap justify-between">
 				<div className="mb-2">
 					{filters.map((filter) => {
 						const finalClasses = classnames(
-							buttonBaseClasses,
+							'mr-3 last:mr-2',
 							`hover:${filter.color}`,
 							{
-								[`text-white ${filter.color}`]: filter.active,
+								[`text-white bg-${filter.color}`]: filter.active,
 							}
 						);
 						return (
@@ -85,7 +94,9 @@ const Vans = () => {
 					})}
 				</div>
 
-				<button className="text-sm underline underline-offset-[3px]">
+				<button
+					className="text-sm underline underline-offset-[3px]"
+					onClick={clearFilters}>
 					Clear Filters
 				</button>
 			</div>
@@ -105,9 +116,42 @@ const Vans = () => {
 					{constructFilterButtons()}
 				</section>
 
-				<section>
-					
+				<section className="my-8 flex flex-wrap justify-between">
+					{vans.map((van) => {
+						return (
+							<div className="mb-6 w-[48%] max-w-[300px] sm:mr-3">
+								<img
+									src={van.imageUrl}
+									alt="van photo"
+									className="aspect-square rounded"
+								/>
 
+								<div className="flex justify-between">
+									<div className="w-3/4">
+										<h1 className="mb-1 text-lg font-semibold">
+											{van.name}
+										</h1>
+
+										<Button
+											color={getColorOfType(van.type)}
+											corner="roundedMD"
+											disabled
+											classNames="px-3">
+											{van.type.charAt(0).toUpperCase() +
+												van.type.slice(1)}
+										</Button>
+									</div>
+
+									<div className="w-1/4 text-right">
+										<p className="-mb-1 text-lg font-semibold">
+											${van.price}
+										</p>
+										<span className="block text-xs">/day</span>
+									</div>
+								</div>
+							</div>
+						);
+					})}
 				</section>
 			</main>
 			<Footer className="flex-none" />

@@ -8,13 +8,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#0284c7',
-        secondary: '#3f3f46',
-        tertiary: '#f97316',
-        success: '#16a34a',
-        warning: '#E0A801',
-        danger: '#dc2626',
-        dark: '#171717'
+        primary: '#e17653',
+        secondary: '#115e59',
+        tertiary: '#161616',
       },
 
       borderWidth: {
@@ -28,3 +24,10 @@ export default {
   },
   plugins: [],
 };
+
+// colors: {
+//   primary: '#ffe1bc',
+//     secondary: '#e17653',
+//       success: '#115e59',
+//         dark: '#161616';
+// },

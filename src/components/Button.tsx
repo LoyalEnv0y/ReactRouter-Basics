@@ -2,14 +2,7 @@ import { FC, ReactNode } from 'react';
 import classnames from 'classnames';
 import { twMerge } from 'tailwind-merge';
 
-type color =
-	| 'primary'
-	| 'secondary'
-	| 'tertiary'
-	| 'success'
-	| 'warning'
-	| 'danger'
-	| 'dark';
+type color = 'primary' | 'secondary' | 'tertiary';
 type corners = 'cornered' | 'roundedMD' | 'roundedLG' | 'roundedXL' | 'pill';
 
 const cornersMap = new Map([
@@ -24,44 +17,39 @@ interface ButtonProps {
 	color?: color;
 	corner?: corners;
 	border?: boolean;
+	disabled: boolean;
 	classNames?: string;
 	children?: ReactNode;
 	onClick?: () => void;
 }
-// TODO: Instead of getting onClick, find a way to replicate ...rest usage of JS with types.
+// TODO: Instead of getting onClick, find a way to replicate ...rest usage of JS with types. #ffe1bc
 const Button: FC<ButtonProps> = ({
 	color,
 	corner,
 	border,
+	disabled,
 	classNames,
 	children,
 	onClick,
 }) => {
 	const classes = twMerge(
 		classnames(
-			'bg-white text-black px-2 py-1 font-semibold rounded shadow-md m-1',
-			'hover:shadow-zinc-600',
-			'active:scale-95',
+			'bg-[#ffe1bc] text-black px-5 py-1 rounded',
+			'active:scale-[97%]',
 			cornersMap.get(corner!),
 			classNames,
 			{
-				'text-stone-100': color,
-				'bg-primary hover:shadow-sky-900': color === 'primary',
-				'bg-secondary hover:shadow-zinc-600': color === 'secondary',
-				'bg-tertiary hover:shadow-orange-900': color === 'tertiary',
-				'bg-success hover:shadow-green-900': color === 'success',
-				'bg-warning hover:shadow-yellow-700': color === 'warning',
-				'bg-danger hover:shadow-red-700': color === 'danger',
-				'bg-dark hover:shadow-neutral-800': color === 'dark',
+				'text-white': color,
+				'bg-primary': color === 'primary',
+				'bg-secondary': color === 'secondary',
+				'bg-tertiary': color === 'tertiary',
 
-				'border-3 border-zinc-400': border,
-				'border-sky-500': border && color === 'primary',
-				'border-zinc-600': border && color === 'secondary',
-				'border-orange-600': border && color === 'tertiary',
-				'border-green-500': border && color === 'success',
-				'border-yellow-500': border && color === 'warning',
-				'border-red-500': border && color === 'danger',
-				'border-neutral-800': border && color === 'dark',
+				'border-3 border-orange-200': border,
+				'border-orange-300': border && color === 'primary',
+				'border-green-700': border && color === 'secondary',
+				'border-gray-400': border && color === 'tertiary',
+
+				'active:scale-100 cursor-default': disabled,
 			}
 		)
 	);

@@ -37,9 +37,9 @@ const About = () => {
 							Your van is ready.
 						</h2>
 						<Button
-							color="dark"
+							color="tertiary"
 							corner="roundedLG"
-							classNames="px-3 py-2">
+							classNames="px-3 py-2 m-0">
 							Explore our vans
 						</Button>
 					</div>

@@ -17,7 +17,7 @@ const Home = () => {
 						Rent the perfect van to make your perfect road trip.
 					</p>
 
-					<Button color="tertiary" classNames="w-full h-12">
+					<Button color="primary" classNames="w-full h-12">
 						Find Your Van
 					</Button>
 				</div>

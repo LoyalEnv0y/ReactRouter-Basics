@@ -13,6 +13,7 @@ const Footer: FC<FooterProps> = ({ className }) => {
 		classnames(className)
 	);
 
+	const siteVersion = '0.0.3';
 	return (
 		<footer className={classes}>
 			<section className="flex items-center gap-1">
@@ -22,6 +23,8 @@ const Footer: FC<FooterProps> = ({ className }) => {
 
 				<p>2022 #VANLIFE</p>
 			</section>
+
+			<section>Version {siteVersion}</section>
 		</footer>
 	);
 };

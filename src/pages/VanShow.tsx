@@ -3,7 +3,6 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { useEffect, useState } from 'react';
 import { Van } from '../types';
 import Button from '../components/Button';
-import Main from '../components/Main';
 
 const VanShow = () => {
 	const { id } = useParams();
@@ -33,7 +32,7 @@ const VanShow = () => {
 	};
 
 	return (
-		<Main className="px-5 py-3">
+		<div className="px-5 py-3">
 			<Link to={'/vans'} className="">
 				<KeyboardBackspaceIcon
 					sx={{ fontSize: 15 }}
@@ -67,7 +66,7 @@ const VanShow = () => {
 					Rent This Van
 				</Button>
 			</section>
-		</Main>
+		</div>
 	);
 };
 

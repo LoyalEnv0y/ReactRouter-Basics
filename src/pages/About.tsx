@@ -1,9 +1,8 @@
 import Button from '../components/Button';
-import Main from '../components/Main';
 
 const About = () => {
 	return (
-		<Main className="flex flex-col sm:w-[500px]">
+		<div className="flex flex-col sm:w-[500px]">
 			<img
 				src="../../images/Night-Sky-Caravan.png"
 				alt="banner"
@@ -39,7 +38,7 @@ const About = () => {
 					</Button>
 				</div>
 			</section>
-		</Main>
+		</div>
 	);
 };
 

@@ -1,9 +1,8 @@
 import Button from '../components/Button';
-import Main from '../components/Main';
 
 const Home = () => {
 	return (
-		<Main className='flex items-center justify-center bg-[url("../../public/images/Mountain-Background.png")] bg-cover bg-center bg-no-repeat'>
+		<div className='flex h-[calc(100vh-12rem)] items-center justify-center bg-[url("../../public/images/Mountain-Background.png")] bg-cover bg-center bg-no-repeat'>
 			<div className="flex h-1/2 flex-col items-center px-10 text-white">
 				<h1 className="mb-8 text-3xl font-bold sm:text-5xl">
 					You got travel plans, we got the travel vans.
@@ -18,7 +17,7 @@ const Home = () => {
 					Find Your Van
 				</Button>
 			</div>
-		</Main>
+		</div>
 	);
 };
 

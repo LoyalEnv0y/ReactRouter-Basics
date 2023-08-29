@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import { v4 as uuid } from 'uuid';
 import { Link } from 'react-router-dom';
 import { Van } from '../types';
-import Main from '../components/Main';
 
 const initialFilters = [
 	{
@@ -108,7 +107,7 @@ const Vans = () => {
 	};
 
 	return (
-		<Main className="px-5 self-stretch">
+		<div className="self-stretch px-5">
 			<section>
 				<h1 className=" mb-3 text-2xl font-bold">
 					Explore our van options
@@ -154,7 +153,7 @@ const Vans = () => {
 					);
 				})}
 			</section>
-		</Main>
+		</div>
 	);
 };
 

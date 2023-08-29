@@ -28,6 +28,10 @@ const VanShow = () => {
 
 	if (!van) return <div>Fetching wan data</div>;
 
+	const capitalize = (text: string): string => {
+		return text[0].toUpperCase() + text.slice(1);
+	};
+
 	return (
 		<Main className="px-5 py-3">
 			<Link to={'/vans'} className="">
@@ -48,7 +52,7 @@ const VanShow = () => {
 					corner="roundedMD"
 					disabled
 					className="mb-3 px-4 text-sm">
-					{van.type.charAt(0).toUpperCase() + van.type.slice(1)}
+					{capitalize(van.type)}
 				</Button>
 
 				<h1 className="mb-2 text-2xl font-bold">{van.name}</h1>

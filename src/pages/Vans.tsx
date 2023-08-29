@@ -54,6 +54,10 @@ const Vans = () => {
 		setFilters(filters.map((filter) => ({ ...filter, active: false })));
 	};
 
+	const capitalize = (text: string): string => {
+		return text[0].toUpperCase() + text.slice(1);
+	};
+
 	const constructFilterButtons = () => {
 		const buttons = (
 			<div className="flex flex-wrap justify-between">
@@ -67,12 +71,11 @@ const Vans = () => {
 							}
 						);
 						return (
-							// TODO: Capitalize the type names
 							<Button
 								className={finalClasses}
 								key={filter.id}
 								onClick={() => updateActiveFilters(filter.id)}>
-								{filter.name}
+								{capitalize(filter.name)}
 							</Button>
 						);
 					})}
@@ -123,8 +126,7 @@ const Vans = () => {
 										corner="roundedMD"
 										disabled
 										className="w-24">
-										{van.type.charAt(0).toUpperCase() +
-											van.type.slice(1)}
+										{capitalize(van.type)}
 									</Button>
 								</div>
 

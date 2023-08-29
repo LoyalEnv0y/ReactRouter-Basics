@@ -34,36 +34,38 @@ const VanShow = () => {
 			<Header className="flex-none" />
 
 			<main className="flex-1 bg-orange-50 px-5 py-3">
-				<Link to={'/vans'} className="flex items-end">
+				<Link to={'/vans'} className="">
 					<KeyboardBackspaceIcon
 						sx={{ fontSize: 15 }}
-						className="text-gray-400"
+						className="inline text-gray-400"
 					/>
-					<p className="ml-2 text-xs underline underline-offset-[3px]">
+					<p className="ml-2 inline text-xs underline underline-offset-[3px]">
 						Back to all vans
 					</p>
 				</Link>
 
-				<section>
-					<img src={van?.imageUrl} alt="van image" />
+				<section className="mb-10">
+					<img src={van?.imageUrl} alt="van image" className="my-7" />
 
 					<Button
 						color={van.type}
 						corner="roundedMD"
 						disabled
-						classNames="w-24">
+						classNames="px-4 text-sm mb-3">
 						{van.type.charAt(0).toUpperCase() + van.type.slice(1)}
 					</Button>
 
-					<h1 className="text-2xl font-bold">{van.name}</h1>
-					<h2>
-						<span className="font-bold text-lg">${van.price}</span>
+					<h1 className="mb-2 text-2xl font-bold">{van.name}</h1>
+					<h2 className="mb-2">
+						<span className="text-lg font-bold">${van.price}</span>
 						<span>/day</span>
 					</h2>
 
-					<p className='tracking-tight'>{van.description}</p>
+					<p className="mb-4 tracking-tight">{van.description}</p>
 
-					<Button color="primary">Rent This Van</Button>
+					<Button color="primary" classNames="w-full h-10">
+						Rent This Van
+					</Button>
 				</section>
 			</main>
 

@@ -18,7 +18,7 @@ interface ButtonProps {
 	corner?: corners;
 	border?: boolean;
 	disabled?: boolean;
-	classNames?: string;
+	className?: string;
 	children?: ReactNode;
 	onClick?: () => void;
 }
@@ -28,7 +28,7 @@ const Button: FC<ButtonProps> = ({
 	corner,
 	border,
 	disabled,
-	classNames,
+	className,
 	children,
 	onClick,
 }) => {
@@ -37,7 +37,7 @@ const Button: FC<ButtonProps> = ({
 			'bg-faded text-black px-5 py-1 rounded',
 			'active:scale-97',
 			cornersMap.get(corner!),
-			classNames,
+			className,
 			{
 				'text-white': color,
 				'bg-primary': color === 'primary',

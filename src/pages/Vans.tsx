@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
 import Button from '../components/Button';
 import classnames from 'classnames';
 import { v4 as uuid } from 'uuid';
 import { Link } from 'react-router-dom';
 import { Van } from '../types';
+import Main from '../components/Main';
 
 const initialFilters = [
 	{
@@ -70,7 +69,7 @@ const Vans = () => {
 						return (
 							// TODO: Capitalize the type names
 							<Button
-								classNames={finalClasses}
+								className={finalClasses}
 								key={filter.id}
 								onClick={() => updateActiveFilters(filter.id)}>
 								{filter.name}
@@ -92,60 +91,55 @@ const Vans = () => {
 
 	// TODO: Show only the filtered vans
 	return (
-		// TODO: Create a Main file to reduce code duplication
-		<div className="flex min-h-screen flex-col">
-			<Header className="flex-none" />
-			<main className="flex-1 bg-orange-50 px-5">
-				<section>
-					<h1 className=" mb-3 text-2xl font-bold">
-						Explore our van options
-					</h1>
-					{constructFilterButtons()}
-				</section>
+		<Main className="px-5">
+			<section>
+				<h1 className=" mb-3 text-2xl font-bold">
+					Explore our van options
+				</h1>
+				{constructFilterButtons()}
+			</section>
 
-				<section className="my-8 flex flex-wrap justify-between">
-					{vans.map((van) => {
-						return (
-							<Link
-								to={`/vans/${van.id}`}
-								className="mb-6 w-[48%] max-w-[300px] sm:mr-3">
-								<img
-									src={van.imageUrl}
-									alt="van photo"
-									className="aspect-square rounded"
-								/>
+			<section className="my-8 flex flex-wrap justify-between">
+				{vans.map((van) => {
+					return (
+						<Link
+							to={`/vans/${van.id}`}
+							className="mb-6 w-[48%] max-w-[300px] sm:mr-3">
+							<img
+								src={van.imageUrl}
+								alt="van photo"
+								className="aspect-square rounded"
+							/>
 
-								<div className="flex justify-between">
-									<div className="flex h-24 w-3/4 flex-col justify-between">
-										<h1 className="mb-1 text-lg font-semibold">
-											{van.name}
-										</h1>
+							<div className="flex justify-between">
+								<div className="flex h-24 w-3/4 flex-col justify-between">
+									<h1 className="mb-1 text-lg font-semibold">
+										{van.name}
+									</h1>
 
-										{/* TODO: Create a Badge component */}
-										<Button
-											color={van.type}
-											corner="roundedMD"
-											disabled
-											classNames="w-24">
-											{van.type.charAt(0).toUpperCase() +
-												van.type.slice(1)}
-										</Button>
-									</div>
-
-									<div className="w-1/4 text-right">
-										<p className="-mb-1 text-lg font-semibold">
-											${van.price}
-										</p>
-										<span className="block text-xs">/day</span>
-									</div>
+									{/* TODO: Create a Badge component */}
+									<Button
+										color={van.type}
+										corner="roundedMD"
+										disabled
+										className="w-24">
+										{van.type.charAt(0).toUpperCase() +
+											van.type.slice(1)}
+									</Button>
 								</div>
-							</Link>
-						);
-					})}
-				</section>
-			</main>
-			<Footer className="flex-none" />
-		</div>
+
+								<div className="w-1/4 text-right">
+									<p className="-mb-1 text-lg font-semibold">
+										${van.price}
+									</p>
+									<span className="block text-xs">/day</span>
+								</div>
+							</div>
+						</Link>
+					);
+				})}
+			</section>
+		</Main>
 	);
 };
 

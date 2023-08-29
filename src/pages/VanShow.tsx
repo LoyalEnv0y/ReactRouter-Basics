@@ -1,10 +1,9 @@
 import { Link, useParams } from 'react-router-dom';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { useEffect, useState } from 'react';
 import { Van } from '../types';
 import Button from '../components/Button';
+import Main from '../components/Main';
 
 const VanShow = () => {
 	const { id } = useParams();
@@ -30,47 +29,41 @@ const VanShow = () => {
 	if (!van) return <div>Fetching wan data</div>;
 
 	return (
-		<div className="flex min-h-screen flex-col">
-			<Header className="flex-none" />
+		<Main className="px-5 py-3">
+			<Link to={'/vans'} className="">
+				<KeyboardBackspaceIcon
+					sx={{ fontSize: 15 }}
+					className="inline text-gray-400"
+				/>
+				<p className="ml-2 inline text-xs underline underline-offset-[3px]">
+					Back to all vans
+				</p>
+			</Link>
 
-			<main className="flex-1 bg-orange-50 px-5 py-3">
-				<Link to={'/vans'} className="">
-					<KeyboardBackspaceIcon
-						sx={{ fontSize: 15 }}
-						className="inline text-gray-400"
-					/>
-					<p className="ml-2 inline text-xs underline underline-offset-[3px]">
-						Back to all vans
-					</p>
-				</Link>
+			<section className="mb-10">
+				<img src={van?.imageUrl} alt="van image" className="my-7" />
 
-				<section className="mb-10">
-					<img src={van?.imageUrl} alt="van image" className="my-7" />
+				<Button
+					color={van.type}
+					corner="roundedMD"
+					disabled
+					className="mb-3 px-4 text-sm">
+					{van.type.charAt(0).toUpperCase() + van.type.slice(1)}
+				</Button>
 
-					<Button
-						color={van.type}
-						corner="roundedMD"
-						disabled
-						classNames="px-4 text-sm mb-3">
-						{van.type.charAt(0).toUpperCase() + van.type.slice(1)}
-					</Button>
+				<h1 className="mb-2 text-2xl font-bold">{van.name}</h1>
+				<h2 className="mb-2">
+					<span className="text-lg font-bold">${van.price}</span>
+					<span>/day</span>
+				</h2>
 
-					<h1 className="mb-2 text-2xl font-bold">{van.name}</h1>
-					<h2 className="mb-2">
-						<span className="text-lg font-bold">${van.price}</span>
-						<span>/day</span>
-					</h2>
+				<p className="mb-4 tracking-tight">{van.description}</p>
 
-					<p className="mb-4 tracking-tight">{van.description}</p>
-
-					<Button color="primary" classNames="w-full h-10">
-						Rent This Van
-					</Button>
-				</section>
-			</main>
-
-			<Footer className="flex-none" />
-		</div>
+				<Button color="primary" className="h-10 w-full">
+					Rent This Van
+				</Button>
+			</section>
+		</Main>
 	);
 };
 

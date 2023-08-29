@@ -4,15 +4,8 @@ import Header from '../components/Header';
 import Button from '../components/Button';
 import classnames from 'classnames';
 import { v4 as uuid } from 'uuid';
-
-type Van = {
-	id: string;
-	name: string;
-	price: number;
-	description: string;
-	imageUrl: string;
-	type: 'rugged' | 'simple' | 'luxury';
-};
+import { Link } from 'react-router-dom';
+import { Van } from '../types';
 
 const initialFilters = [
 	{
@@ -119,7 +112,9 @@ const Vans = () => {
 				<section className="my-8 flex flex-wrap justify-between">
 					{vans.map((van) => {
 						return (
-							<div className="mb-6 w-[48%] max-w-[300px] sm:mr-3">
+							<Link
+								to={`/vans/${van.id}`}
+								className="mb-6 w-[48%] max-w-[300px] sm:mr-3">
 								<img
 									src={van.imageUrl}
 									alt="van photo"
@@ -127,7 +122,7 @@ const Vans = () => {
 								/>
 
 								<div className="flex justify-between">
-									<div className="w-3/4 h-24 flex flex-col justify-between">
+									<div className="flex h-24 w-3/4 flex-col justify-between">
 										<h1 className="mb-1 text-lg font-semibold">
 											{van.name}
 										</h1>
@@ -149,7 +144,7 @@ const Vans = () => {
 										<span className="block text-xs">/day</span>
 									</div>
 								</div>
-							</div>
+							</Link>
 						);
 					})}
 				</section>

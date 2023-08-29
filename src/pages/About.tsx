@@ -8,7 +8,7 @@ const About = () => {
 			<Header className="flex-none" />
 			<main className="flex flex-1 flex-col sm:w-[500px]">
 				<img
-					src="images/Night-Sky-Caravan.png"
+					src="../../images/Night-Sky-Caravan.png"
 					alt="banner"
 					className="sm:w-[500px]"
 				/>

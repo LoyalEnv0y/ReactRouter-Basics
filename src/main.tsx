@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home.js';
 import About from './pages/About.js';
 import Vans from './pages/Vans.js';
+import VanShow from './pages/Van.js';
 
 import '../public/styles/index.css';
 import './mockServer.js';
@@ -26,6 +27,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 				<Route path="/" element={<Home />} />
 				<Route path="/about" element={<About />} />
 				<Route path="/vans" element={<Vans />} />
+				<Route path="/vans/:id" element={<VanShow />} />
 			</Routes>
 		</BrowserRouter>
 	</React.StrictMode>

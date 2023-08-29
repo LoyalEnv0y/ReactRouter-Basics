@@ -22,6 +22,7 @@ const initialFilters = [
 
 const Vans = () => {
 	const [vans, setVans] = useState<Van[]>([]);
+	const [filteredVans, setFilteredVans] = useState<Van[]>([]);
 	const [filters, setFilters] = useState(initialFilters);
 
 	// TODO: Do all the data fetching in a API file.
@@ -41,6 +42,20 @@ const Vans = () => {
 
 		fetchData();
 	}, []);
+
+	useEffect(() => {
+		const activeFilters = filters
+			.filter((filter) => filter.active)
+			.map((filter) => filter.name);
+		console.log(activeFilters);
+
+		if (activeFilters.length < 1) {
+			setFilteredVans(vans);
+			return;
+		}
+
+		setFilteredVans(vans.filter((van) => activeFilters.includes(van.type)));
+	}, [filters, vans]);
 
 	const updateActiveFilters = (id: string) => {
 		setFilters(
@@ -92,9 +107,8 @@ const Vans = () => {
 		return buttons;
 	};
 
-	// TODO: Show only the filtered vans
 	return (
-		<Main className="px-5">
+		<Main className="px-5 self-stretch">
 			<section>
 				<h1 className=" mb-3 text-2xl font-bold">
 					Explore our van options
@@ -103,7 +117,7 @@ const Vans = () => {
 			</section>
 
 			<section className="my-8 flex flex-wrap justify-between">
-				{vans.map((van) => {
+				{filteredVans.map((van) => {
 					return (
 						<Link
 							to={`/vans/${van.id}`}
@@ -120,7 +134,6 @@ const Vans = () => {
 										{van.name}
 									</h1>
 
-									{/* TODO: Create a Badge component */}
 									<Button
 										color={van.type}
 										corner="roundedMD"

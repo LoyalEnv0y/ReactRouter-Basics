@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home.js';
 import About from './pages/About.js';
 import Vans from './pages/Vans.js';
-import VanShow from './pages/Van.js';
+import VanShow from './pages/VanShow.js';
 
 import '../public/styles/index.css';
 import './mockServer.js';

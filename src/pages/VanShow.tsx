@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { useEffect, useState } from 'react';
 import { Van } from '../types';
+import Button from '../components/Button';
 
 const VanShow = () => {
 	const { id } = useParams();
@@ -26,6 +27,16 @@ const VanShow = () => {
 		fetchVan();
 	}, [id]);
 
+	if (!van) return <div>Fetching wan data</div>;
+
+	const getColorOfType = (
+		type: 'simple' | 'luxury' | 'rugged'
+	): 'primary' | 'secondary' | 'tertiary' => {
+		if (type === 'simple') return 'primary';
+		if (type === 'rugged') return 'secondary';
+		return 'tertiary';
+	};
+
 	return (
 		<div className="flex min-h-screen flex-col">
 			<Header className="flex-none" />
@@ -43,6 +54,24 @@ const VanShow = () => {
 
 				<section>
 					<img src={van?.imageUrl} alt="van image" />
+
+					<Button
+						color={getColorOfType(van.type)}
+						corner="roundedMD"
+						disabled
+						classNames="w-24">
+						{van.type.charAt(0).toUpperCase() + van.type.slice(1)}
+					</Button>
+
+					<h1 className="text-2xl font-bold">{van.name}</h1>
+					<h2>
+						<span className="font-bold text-lg">${van.price}</span>
+						<span>/day</span>
+					</h2>
+
+					<p className='tracking-tight'>{van.description}</p>
+
+					<Button color="primary">Rent This Van</Button>
 				</section>
 			</main>
 

@@ -27,6 +27,7 @@ const Vans = () => {
 	const [vans, setVans] = useState<Van[]>([]);
 	const [filters, setFilters] = useState(initialFilters);
 
+	// TODO: Do all the data fetching in a API file.
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -77,6 +78,7 @@ const Vans = () => {
 							}
 						);
 						return (
+							// TODO: Capitalize the type names
 							<Button
 								classNames={finalClasses}
 								key={filter.id}
@@ -98,7 +100,9 @@ const Vans = () => {
 		return buttons;
 	};
 
+	// TODO: Show only the filtered vans
 	return (
+		// TODO: Create a Main file to reduce code duplication
 		<div className="flex min-h-screen flex-col">
 			<Header className="flex-none" />
 			<main className="flex-1 bg-orange-50 px-5">
@@ -127,6 +131,7 @@ const Vans = () => {
 											{van.name}
 										</h1>
 
+										{/* TODO: Create a Badge component */}
 										<Button
 											color={getColorOfType(van.type)}
 											corner="roundedMD"

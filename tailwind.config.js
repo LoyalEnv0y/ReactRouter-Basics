@@ -8,9 +8,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#e17653',
-        secondary: '#115e59',
-        tertiary: '#161616',
+        primary: '#ff8c37',
+        faded: '#FFE1BD',
+
+        simple: '#E17653',
+        rugged: '#115E59',
+        luxury: '#161616',
       },
 
       borderWidth: {

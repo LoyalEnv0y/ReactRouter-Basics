@@ -8,7 +8,7 @@ const About = () => {
 			<Header className="flex-none" />
 			<main className="flex flex-1 flex-col sm:w-[500px]">
 				<img
-					src="images/Night-Sky-Caravan.png"
+					src="../../images/Night-Sky-Caravan.png"
 					alt="banner"
 					className="sm:w-[500px]"
 				/>
@@ -37,7 +37,7 @@ const About = () => {
 							Your van is ready.
 						</h2>
 						<Button
-							color="tertiary"
+							color="luxury"
 							corner="roundedLG"
 							classNames="px-3 py-2 m-0">
 							Explore our vans

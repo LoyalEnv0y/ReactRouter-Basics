@@ -4,29 +4,20 @@ import Header from '../components/Header';
 import Button from '../components/Button';
 import classnames from 'classnames';
 import { v4 as uuid } from 'uuid';
-
-type Van = {
-	id: string;
-	name: string;
-	price: number;
-	description: string;
-	imageUrl: string;
-	type: 'rugged' | 'simple' | 'luxury';
-};
+import { Link } from 'react-router-dom';
+import { Van } from '../types';
 
 const initialFilters = [
 	{
 		id: uuid(),
 		name: 'simple',
 		active: false,
-		color: 'primary',
 	},
-	{ id: uuid(), name: 'luxury', active: false, color: 'tertiary' },
+	{ id: uuid(), name: 'luxury', active: false },
 	{
 		id: uuid(),
 		name: 'rugged',
 		active: false,
-		color: 'secondary',
 	},
 ];
 
@@ -34,6 +25,7 @@ const Vans = () => {
 	const [vans, setVans] = useState<Van[]>([]);
 	const [filters, setFilters] = useState(initialFilters);
 
+	// TODO: Do all the data fetching in a API file.
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -63,14 +55,6 @@ const Vans = () => {
 		setFilters(filters.map((filter) => ({ ...filter, active: false })));
 	};
 
-	const getColorOfType = (
-		type: 'simple' | 'luxury' | 'rugged'
-	): 'primary' | 'secondary' | 'tertiary' => {
-		if (type === 'simple') return 'primary';
-		if (type === 'rugged') return 'secondary';
-		return 'tertiary';
-	};
-
 	const constructFilterButtons = () => {
 		const buttons = (
 			<div className="flex flex-wrap justify-between">
@@ -78,12 +62,13 @@ const Vans = () => {
 					{filters.map((filter) => {
 						const finalClasses = classnames(
 							'mr-3 last:mr-2',
-							`hover:${filter.color}`,
+							`hover:${filter.name}`,
 							{
-								[`text-white bg-${filter.color}`]: filter.active,
+								[`text-white bg-${filter.name}`]: filter.active,
 							}
 						);
 						return (
+							// TODO: Capitalize the type names
 							<Button
 								classNames={finalClasses}
 								key={filter.id}
@@ -105,7 +90,9 @@ const Vans = () => {
 		return buttons;
 	};
 
+	// TODO: Show only the filtered vans
 	return (
+		// TODO: Create a Main file to reduce code duplication
 		<div className="flex min-h-screen flex-col">
 			<Header className="flex-none" />
 			<main className="flex-1 bg-orange-50 px-5">
@@ -119,7 +106,9 @@ const Vans = () => {
 				<section className="my-8 flex flex-wrap justify-between">
 					{vans.map((van) => {
 						return (
-							<div className="mb-6 w-[48%] max-w-[300px] sm:mr-3">
+							<Link
+								to={`/vans/${van.id}`}
+								className="mb-6 w-[48%] max-w-[300px] sm:mr-3">
 								<img
 									src={van.imageUrl}
 									alt="van photo"
@@ -127,13 +116,14 @@ const Vans = () => {
 								/>
 
 								<div className="flex justify-between">
-									<div className="w-3/4 h-24 flex flex-col justify-between">
+									<div className="flex h-24 w-3/4 flex-col justify-between">
 										<h1 className="mb-1 text-lg font-semibold">
 											{van.name}
 										</h1>
 
+										{/* TODO: Create a Badge component */}
 										<Button
-											color={getColorOfType(van.type)}
+											color={van.type}
 											corner="roundedMD"
 											disabled
 											classNames="w-24">
@@ -149,7 +139,7 @@ const Vans = () => {
 										<span className="block text-xs">/day</span>
 									</div>
 								</div>
-							</div>
+							</Link>
 						);
 					})}
 				</section>

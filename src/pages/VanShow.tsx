@@ -29,14 +29,6 @@ const VanShow = () => {
 
 	if (!van) return <div>Fetching wan data</div>;
 
-	const getColorOfType = (
-		type: 'simple' | 'luxury' | 'rugged'
-	): 'primary' | 'secondary' | 'tertiary' => {
-		if (type === 'simple') return 'primary';
-		if (type === 'rugged') return 'secondary';
-		return 'tertiary';
-	};
-
 	return (
 		<div className="flex min-h-screen flex-col">
 			<Header className="flex-none" />
@@ -56,7 +48,7 @@ const VanShow = () => {
 					<img src={van?.imageUrl} alt="van image" />
 
 					<Button
-						color={getColorOfType(van.type)}
+						color={van.type}
 						corner="roundedMD"
 						disabled
 						classNames="w-24">

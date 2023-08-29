@@ -37,7 +37,7 @@ const About = () => {
 							Your van is ready.
 						</h2>
 						<Button
-							color="tertiary"
+							color="luxury"
 							corner="roundedLG"
 							classNames="px-3 py-2 m-0">
 							Explore our vans

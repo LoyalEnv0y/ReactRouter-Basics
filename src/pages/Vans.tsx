@@ -12,14 +12,12 @@ const initialFilters = [
 		id: uuid(),
 		name: 'simple',
 		active: false,
-		color: 'primary',
 	},
-	{ id: uuid(), name: 'luxury', active: false, color: 'tertiary' },
+	{ id: uuid(), name: 'luxury', active: false },
 	{
 		id: uuid(),
 		name: 'rugged',
 		active: false,
-		color: 'secondary',
 	},
 ];
 
@@ -57,14 +55,6 @@ const Vans = () => {
 		setFilters(filters.map((filter) => ({ ...filter, active: false })));
 	};
 
-	const getColorOfType = (
-		type: 'simple' | 'luxury' | 'rugged'
-	): 'primary' | 'secondary' | 'tertiary' => {
-		if (type === 'simple') return 'primary';
-		if (type === 'rugged') return 'secondary';
-		return 'tertiary';
-	};
-
 	const constructFilterButtons = () => {
 		const buttons = (
 			<div className="flex flex-wrap justify-between">
@@ -72,9 +62,9 @@ const Vans = () => {
 					{filters.map((filter) => {
 						const finalClasses = classnames(
 							'mr-3 last:mr-2',
-							`hover:${filter.color}`,
+							`hover:${filter.name}`,
 							{
-								[`text-white bg-${filter.color}`]: filter.active,
+								[`text-white bg-${filter.name}`]: filter.active,
 							}
 						);
 						return (
@@ -133,7 +123,7 @@ const Vans = () => {
 
 										{/* TODO: Create a Badge component */}
 										<Button
-											color={getColorOfType(van.type)}
+											color={van.type}
 											corner="roundedMD"
 											disabled
 											classNames="w-24">

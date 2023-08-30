@@ -5,7 +5,7 @@ import Vans from './pages/Vans';
 import VanShow from './pages/VanShow';
 import Layout from './components/Layout';
 import Host from './pages/Host/Host';
-import HostNav from './components/HostNav';
+import HostNav from './components/Host/HostNav';
 import Income from './pages/Host/Income';
 import HostVans from './pages/Host/HostVans';
 import Reviews from './pages/Host/Reviews';

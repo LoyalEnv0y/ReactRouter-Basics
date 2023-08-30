@@ -26,6 +26,7 @@ const Host = () => {
 		};
 
 		fetchVans();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	if (vans.length < 3) return 'Loading Vans';

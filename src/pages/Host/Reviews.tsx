@@ -20,7 +20,7 @@ const Reviews = () => {
 
 			{/* TODO: Refactor both reviews and income sections so that they use real charts instead */}
 			<section className="mb-2">
-				<img src="/public/images/Reviews-Chart.png" alt="" />
+				<img src="../../../public/images/Reviews-Chart.png" alt="" />
 			</section>
 
 			<section>
@@ -77,7 +77,7 @@ const Reviews = () => {
 						<StarIcon
 							className="text-orange-500"
 							sx={{ fontSize: '18px' }}
-						/>""
+						/>
 						<StarIcon
 							className="text-orange-500"
 							sx={{ fontSize: '18px' }}

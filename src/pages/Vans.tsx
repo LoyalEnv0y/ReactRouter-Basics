@@ -46,8 +46,7 @@ const Vans = () => {
 		const activeFilters = filters
 			.filter((filter) => filter.active)
 			.map((filter) => filter.name);
-		console.log(activeFilters);
-
+			
 		if (activeFilters.length < 1) {
 			setFilteredVans(vans);
 			return;

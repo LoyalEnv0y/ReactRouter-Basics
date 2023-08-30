@@ -75,10 +75,10 @@ const Vans = () => {
 	const constructFilterButtons = () => {
 		const buttons = (
 			<div className="flex flex-wrap justify-between">
-				<div className="mb-2">
+				<div className="mb-1">
 					{filters.map((filter) => {
 						const finalClasses = classnames(
-							'mr-3 last:mr-2',
+							'mr-3 last:mr-2 mb-1',
 							`hover:${filter.name}`,
 							{
 								[`text-white bg-${filter.name}`]: filter.active,
@@ -107,9 +107,9 @@ const Vans = () => {
 	};
 
 	return (
-		<main className="grow px-5">
+		<main className="grow bg-orange-50 px-5 self-stretch">
 			<section>
-				<h1 className=" mb-3 text-2xl font-bold">
+				<h1 className="mb-3 text-2xl font-bold">
 					Explore our van options
 				</h1>
 				{constructFilterButtons()}
@@ -120,7 +120,7 @@ const Vans = () => {
 					return (
 						<Link
 							to={`/vans/${van.id}`}
-							className="mb-6 w-[48%] max-w-[300px] sm:mr-3">
+							className="mb-6 w-[47%] min-w-[110px]">
 							<img
 								src={van.imageUrl}
 								alt="van photo"

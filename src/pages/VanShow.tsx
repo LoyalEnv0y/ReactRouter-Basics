@@ -25,14 +25,15 @@ const VanShow = () => {
 		fetchVan();
 	}, [id]);
 
-	if (!van) return <div className='grow'>Fetching wan data</div>;
+	if (!van) return <div className="grow bg-orange-50">Fetching wan data</div>;
 
 	const capitalize = (text: string): string => {
 		return text[0].toUpperCase() + text.slice(1);
 	};
 
 	return (
-		<main className="grow px-5 py-3">
+		<main className="grow bg-orange-50 px-5 py-3">
+
 			<Link to={'/vans'} className="">
 				<KeyboardBackspaceIcon
 					sx={{ fontSize: 15 }}

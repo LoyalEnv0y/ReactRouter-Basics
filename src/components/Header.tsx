@@ -10,20 +10,20 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ className }) => {
 	const classes = twMerge(
 		classnames(
-			'w-full h-28 flex justify-evenly items-center bg-orange-50',
+			'w-full px-2 h-28 flex justify-evenly items-center bg-orange-50',
 			className
 		)
 	);
 	const getNavLinkClasses = ({ isActive }: { isActive: boolean }): string => {
 		const navLinkClasses =
-			'font-semibold text-xl hover:text-blue-500 hover:underline';
+			'font-semibold text-md sm:text-lg hover:text-blue-500 hover:underline';
 		return `${navLinkClasses} ${isActive && 'underline'}`;
 	};
 
 	return (
 		<header className={classes}>
-			<section className="w-1/2">
-				<Link to="/">
+			<section className="w-2/5">
+				<Link to="/" className='flex'>
 					<img
 						className="w-36"
 						src="../../images/Vanlife-Logo.png"
@@ -31,9 +31,13 @@ const Header: FC<HeaderProps> = ({ className }) => {
 					/>
 				</Link>
 			</section>
-			<nav className="flex w-1/3 justify-around">
+
+			<nav className="flex w-3/5 justify-around">
 				<NavLink to="/about" className={getNavLinkClasses}>
 					About
+				</NavLink>
+				<NavLink to="/Host" className={getNavLinkClasses}>
+					Host
 				</NavLink>
 				<NavLink to="/Vans" className={getNavLinkClasses}>
 					Vans

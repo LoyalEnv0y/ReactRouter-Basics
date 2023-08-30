@@ -1,8 +1,8 @@
 import Button from '../components/Button';
-// bg-orange-50
+
 const About = () => {
 	return (
-		<main className="flex grow flex-col sm:w-[500px]">
+		<main className="flex grow flex-col bg-orange-50 sm:w-[500px]">
 			<img
 				src="../../images/Night-Sky-Caravan.png"
 				alt="banner"

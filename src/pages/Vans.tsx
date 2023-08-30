@@ -107,7 +107,7 @@ const Vans = () => {
 	};
 
 	return (
-		<main className="grow bg-orange-50 px-5 self-stretch">
+		<main className="grow px-5 self-stretch">
 			<section>
 				<h1 className="mb-3 text-2xl font-bold">
 					Explore our van options

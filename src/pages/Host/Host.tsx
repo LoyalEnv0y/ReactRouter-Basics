@@ -24,7 +24,7 @@ const Host = () => {
 					</div>
 
 					<div className="text-xs font-semibold">
-						<Link to="/">Details</Link>
+						<Link to="income">Details</Link>
 					</div>
 				</section>
 
@@ -42,7 +42,7 @@ const Host = () => {
 					</div>
 
 					<div className="text-xs font-semibold">
-						<Link to="/">Details</Link>
+						<Link to="reviews">Details</Link>
 					</div>
 				</section>
 			</section>

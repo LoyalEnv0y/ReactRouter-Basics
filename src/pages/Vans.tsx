@@ -107,7 +107,7 @@ const Vans = () => {
 	};
 
 	return (
-		<div className="self-stretch px-5">
+		<main className="grow px-5">
 			<section>
 				<h1 className=" mb-3 text-2xl font-bold">
 					Explore our van options
@@ -153,7 +153,7 @@ const Vans = () => {
 					);
 				})}
 			</section>
-		</div>
+		</main>
 	);
 };
 

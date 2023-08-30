@@ -50,7 +50,7 @@ const Reviews = () => {
 
 					<div className="flex items-center gap-x-1 text-sm font-semibold">
 						<p>Elliot</p>
-						<p className="text-[#a8a6a4]">December 1, 2022</p>
+						<p className="text-gray-400">December 1, 2022</p>
 					</div>
 
 					<div>
@@ -77,7 +77,7 @@ const Reviews = () => {
 						<StarIcon
 							className="text-orange-500"
 							sx={{ fontSize: '18px' }}
-						/>
+						/>""
 						<StarIcon
 							className="text-orange-500"
 							sx={{ fontSize: '18px' }}
@@ -90,7 +90,7 @@ const Reviews = () => {
 
 					<div className="flex items-center gap-x-1 text-sm font-semibold">
 						<p>Sandy</p>
-						<p className="text-[#a8a6a4]">November 23, 2022</p>
+						<p className="text-gray-400">November 23, 2022</p>
 					</div>
 
 					<div>

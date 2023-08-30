@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 const Income = () => {
 	return (
 		<main className="mx-5 grow">
-			<section className="my-3 flex h-24 flex-col justify-between">
+			<section className="my-3 flex h-28 flex-col justify-between">
 				<h1 className="text-2xl font-bold">Income</h1>
 				<p className=" text-xs">
 					Last
-					<Link to="/" className="ml-1 underline underline-offset-[3px]">
+					<Link
+						to="/"
+						className="ml-1 font-semibold underline underline-offset-[3px]">
 						30 days
 					</Link>
 				</p>
@@ -23,14 +25,16 @@ const Income = () => {
 				/>
 			</section>
 
-			<section className='mb-10'>
-				<div className="my-4 flex items-center justify-between">
-					<h2 className="font-bold">Your Transactions (3)</h2>
+			<section className="mb-10">
+				<div className="mt-4 mb-5 flex items-center justify-between">
+					<h2 className="font-bold leading-none">
+						Your Transactions (3)
+					</h2>
 					<p className="text-xs">
 						Last
 						<Link
 							to="/"
-							className="ml-1 underline underline-offset-[3px]">
+							className="ml-1 font-semibold underline underline-offset-[3px]">
 							30 days
 						</Link>
 					</p>

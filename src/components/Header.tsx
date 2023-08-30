@@ -10,7 +10,7 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ className }) => {
 	const classes = twMerge(
 		classnames(
-			'w-full px-2 h-28 flex justify-evenly items-center bg-orange-50',
+			'w-full px-2 h-28 flex justify-evenly items-center',
 			className
 		)
 	);

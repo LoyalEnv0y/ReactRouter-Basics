@@ -8,7 +8,7 @@ import Header from './Header';
 */
 const Layout = () => {
 	return (
-		<div className="flex min-h-screen w-full flex-col sm:items-center sm:max-w-[600px]">
+		<div className="flex min-h-screen w-full flex-col sm:max-w-[600px]">
 			<Header />
 				<Outlet />
 			<Footer />

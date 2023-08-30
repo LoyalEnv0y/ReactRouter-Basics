@@ -4,6 +4,11 @@ import About from './pages/About';
 import Vans from './pages/Vans';
 import VanShow from './pages/VanShow';
 import Layout from './components/Layout';
+import Host from './pages/Host/Host';
+import HostNav from './components/HostNav';
+import Income from './pages/Host/Income';
+import HostVans from './pages/Host/HostVans';
+import Reviews from './pages/Host/Reviews';
 
 /*
 	-------------------------------------- 🌐 --------------------------------------
@@ -34,6 +39,15 @@ const App = () => {
 				<Route path="/vans">
 					<Route index element={<Vans />} />
 					<Route path=":id" element={<VanShow />} />
+				</Route>
+
+				<Route path="/host">
+					<Route element={<HostNav />}>
+						<Route index element={<Host />} />
+						<Route path="income" element={<Income />} />
+						<Route path="vans" element={<HostVans />} />
+						<Route path="reviews" element={<Reviews />} />
+					</Route>
 				</Route>
 			</Route>
 		</Routes>

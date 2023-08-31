@@ -14,11 +14,11 @@ const VanInfo: FC<VanInfoProps> = ({ van }) => {
 
 	return (
 		<div className="flex items-center gap-x-4">
-			<div className="basis-4/12">
+			<div className="basis-6/12">
 				<img src={van.imageUrl} className="rounded-sm" />
 			</div>
 
-			<div className="basis-8/12">
+			<div className="basis-7/12">
 				<Button color={van.type} disabled className="px-3 text-xs mb-1">
 					{capitalize(van.type)}
 				</Button>

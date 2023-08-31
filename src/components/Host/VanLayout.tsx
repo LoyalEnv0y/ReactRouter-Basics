@@ -28,7 +28,7 @@ const VanLayout = () => {
 		fetchVan();
 	}, [id]);
 
-	if (!van) return <div>Loading Van Info</div>;
+	if (!van) return <div className="mx-5 grow">Loading Van Info</div>;
 
 	// TODO: Move the getNavLinkClasses to util functions file
 	const getNavLinkClasses = ({ isActive }: { isActive: boolean }): string => {
@@ -42,7 +42,7 @@ const VanLayout = () => {
 	return (
 		<main className="mx-5 grow mt-7">
 			<section className='mb-5'>
-				<Link to={'/vans'} className="">
+				<Link to={'/host/vans'} className="">
 					<KeyboardBackspaceIcon
 						sx={{ fontSize: 15 }}
 						className="inline text-gray-400"

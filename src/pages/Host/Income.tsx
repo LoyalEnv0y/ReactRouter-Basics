@@ -19,7 +19,7 @@ const Income = () => {
 
 			<section className="my-6">
 				<img
-					src="../../../public/images/Income-Chart.png"
+					src="/images/Income-Chart.png"
 					alt=""
 					className=""
 				/>

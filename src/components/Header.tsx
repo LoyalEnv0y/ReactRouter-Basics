@@ -36,10 +36,10 @@ const Header: FC<HeaderProps> = ({ className }) => {
 				<NavLink to="/about" className={getNavLinkClasses}>
 					About
 				</NavLink>
-				<NavLink to="/Host" className={getNavLinkClasses}>
+				<NavLink to="/host" className={getNavLinkClasses}>
 					Host
 				</NavLink>
-				<NavLink to="/Vans" className={getNavLinkClasses}>
+				<NavLink to="/vans" className={getNavLinkClasses}>
 					Vans
 				</NavLink>
 			</nav>

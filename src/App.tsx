@@ -9,6 +9,7 @@ import HostNav from './components/Host/HostNav';
 import Income from './pages/Host/Income';
 import HostVans from './pages/Host/HostVans';
 import Reviews from './pages/Host/Reviews';
+import HostVanShow from './pages/Host/HostVanShow';
 
 /*
 	-------------------------------------- 🌐 --------------------------------------
@@ -45,8 +46,12 @@ const App = () => {
 					<Route element={<HostNav />}>
 						<Route index element={<Host />} />
 						<Route path="income" element={<Income />} />
-						<Route path="vans" element={<HostVans />} />
 						<Route path="reviews" element={<Reviews />} />
+
+						<Route path="vans">
+							<Route index element={<HostVans />} />
+							<Route path=":id" element={<HostVanShow />} />
+						</Route>
 					</Route>
 				</Route>
 			</Route>

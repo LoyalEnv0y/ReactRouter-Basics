@@ -6,7 +6,7 @@ const HostNav = () => {
 	const getNavLinkClasses = ({ isActive }: { isActive: boolean }): string => {
 		const baseClasses = 'text-sm underline-offset-[3px] mr-5';
 
-		return twMerge(classNames(baseClasses, { underline: isActive }));
+		return twMerge(classNames(baseClasses, { 'underline': isActive }));
 	};
 
 	return (

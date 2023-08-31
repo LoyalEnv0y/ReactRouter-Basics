@@ -26,7 +26,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
 				<Link to="/" className='flex'>
 					<img
 						className="w-36"
-						src="../../images/Vanlife-Logo.png"
+						src="/images/Vanlife-Logo.png"
 						alt="logo"
 					/>
 				</Link>

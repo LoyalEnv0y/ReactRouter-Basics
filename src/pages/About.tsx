@@ -5,7 +5,7 @@ const About = () => {
 	return (
 		<main className="flex grow flex-col">
 			<img
-				src="../../images/Night-Sky-Caravan.png"
+				src="/images/Night-Sky-Caravan.png"
 				alt="banner"
 				className=""
 			/>

@@ -3,7 +3,7 @@ import Button from '../components/Button';
 
 const Home = () => {
 	return (
-		<main className='flex grow bg-[url("../../public/images/Mountain-Background.png")] bg-cover bg-center bg-no-repeat'>
+		<main className='flex grow bg-[url("/images/Mountain-Background.png")] bg-cover bg-center bg-no-repeat'>
 			<div className="my-auto flex justify-center">
 				<div className="flex h-1/2 flex-col items-center px-10 text-white">
 					<h1 className="mb-8 text-3xl font-bold sm:text-5xl">

@@ -49,7 +49,7 @@ const VanList = () => {
 							</div>
 						</div>
 						<div className="text-xs font-semibold">
-							<Link to="/">Edit</Link>
+							<Link to={`/host/vans/${van.id}`}>Edit</Link>
 						</div>
 					</div>
 				);

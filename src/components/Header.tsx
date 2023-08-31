@@ -10,7 +10,7 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ className }) => {
 	const classes = twMerge(
 		classnames(
-			'w-full px-2 h-28 flex justify-evenly items-center',
+			'w-full px-2 h-28 flex justify-evenly items-center gap-x-10',
 			className
 		)
 	);
@@ -36,10 +36,10 @@ const Header: FC<HeaderProps> = ({ className }) => {
 				<NavLink to="/about" className={getNavLinkClasses}>
 					About
 				</NavLink>
-				<NavLink to="/Host" className={getNavLinkClasses}>
+				<NavLink to="/host" className={getNavLinkClasses}>
 					Host
 				</NavLink>
-				<NavLink to="/Vans" className={getNavLinkClasses}>
+				<NavLink to="/vans" className={getNavLinkClasses}>
 					Vans
 				</NavLink>
 			</nav>

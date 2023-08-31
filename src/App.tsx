@@ -11,6 +11,8 @@ import HostVans from './pages/Host/HostVans';
 import Reviews from './pages/Host/Reviews';
 import HostVanShow from './pages/Host/HostVanShow';
 import VanLayout from './components/Host/VanLayout';
+import HostVanPricing from './pages/Host/HostVanPricing';
+import HostVanPhotos from './pages/Host/HostVanPhotos';
 
 /*
 	-------------------------------------- 🌐 --------------------------------------
@@ -53,6 +55,11 @@ const App = () => {
 							<Route index element={<HostVans />} />
 							<Route path=":id" element={<VanLayout />}>
 								<Route index element={<HostVanShow />} />
+								<Route
+									path="pricing"
+									element={<HostVanPricing />}
+								/>
+								<Route path="photos" element={<HostVanPhotos />}/>
 							</Route>
 						</Route>
 					</Route>

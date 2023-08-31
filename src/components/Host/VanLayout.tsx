@@ -60,10 +60,10 @@ const VanLayout = () => {
 					<NavLink to="" end className={getNavLinkClasses}>
 						Details
 					</NavLink>
-					<NavLink to="income" className={getNavLinkClasses}>
+					<NavLink to="pricing" className={getNavLinkClasses}>
 						Pricing
 					</NavLink>
-					<NavLink to="vans" className={getNavLinkClasses}>
+					<NavLink to="photos" className={getNavLinkClasses}>
 						Photos
 					</NavLink>
 				</div>

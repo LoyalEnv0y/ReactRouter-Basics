@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import classnames from 'classnames';
 import { twMerge } from 'tailwind-merge';
+import { getNavLinkClasses } from '../utils';
 
 interface HeaderProps {
 	className?: string;
@@ -14,11 +15,6 @@ const Header: FC<HeaderProps> = ({ className }) => {
 			className
 		)
 	);
-	const getNavLinkClasses = ({ isActive }: { isActive: boolean }): string => {
-		const navLinkClasses =
-			'font-semibold text-md sm:text-lg hover:text-blue-500 hover:underline';
-		return `${navLinkClasses} ${isActive && 'underline'}`;
-	};
 
 	return (
 		<header className={classes}>

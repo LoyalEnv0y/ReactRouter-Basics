@@ -1,17 +1,13 @@
 import { Van } from '../../types';
 import { FC } from 'react';
 import Button from '../Button';
+import { capitalize } from '../../utils';
 
 interface VanInfoProps {
 	van: Van;
 }
 
 const VanInfo: FC<VanInfoProps> = ({ van }) => {
-	// TODO: Move capitalize function to utils file as well
-	const capitalize = (text: string): string => {
-		return text[0].toUpperCase() + text.slice(1);
-	};
-
 	return (
 		<div className="flex items-center gap-x-4">
 			<div className="basis-6/12">

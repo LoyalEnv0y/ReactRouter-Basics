@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import { v4 as uuid } from 'uuid';
 import { Link } from 'react-router-dom';
 import { Van } from '../types';
+import { capitalize } from '../utils';
 
 const initialFilters = [
 	{
@@ -67,10 +68,6 @@ const Vans = () => {
 		setFilters(filters.map((filter) => ({ ...filter, active: false })));
 	};
 
-	const capitalize = (text: string): string => {
-		return text[0].toUpperCase() + text.slice(1);
-	};
-
 	const constructFilterButtons = () => {
 		const buttons = (
 			<div className="flex flex-wrap justify-between">
@@ -106,11 +103,9 @@ const Vans = () => {
 	};
 
 	return (
-		<main className="grow px-5 self-stretch">
+		<main className="grow self-stretch px-5">
 			<section>
-				<h1 className="mb-3 text-2xl font-bold">
-					Explore our van options
-				</h1>
+				<h1 className="mb-3 text-2xl font-bold">Explore our van options</h1>
 				{constructFilterButtons()}
 			</section>
 

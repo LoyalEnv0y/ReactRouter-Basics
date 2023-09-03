@@ -1,14 +1,7 @@
-import classNames from 'classnames';
 import { NavLink, Outlet } from 'react-router-dom';
-import { twMerge } from 'tailwind-merge';
+import { getNavLinkClasses } from '../../utils';
 
 const HostNav = () => {
-	const getNavLinkClasses = ({ isActive }: { isActive: boolean }): string => {
-		const baseClasses = 'text-sm underline-offset-[3px] mr-5';
-
-		return twMerge(classNames(baseClasses, { 'underline': isActive }));
-	};
-
 	return (
 		<>
 			<div className="px-5">

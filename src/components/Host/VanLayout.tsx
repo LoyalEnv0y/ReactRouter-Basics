@@ -1,10 +1,9 @@
 import { Link, NavLink, Outlet, useOutletContext, useParams } from 'react-router-dom';
 import VanInfo from './VanInfo';
-import { twMerge } from 'tailwind-merge';
-import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { Van } from '../../types';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import { getNavLinkClasses } from '../../utils';
 
 
 const VanLayout = () => {
@@ -29,15 +28,6 @@ const VanLayout = () => {
 	}, [id]);
 
 	if (!van) return <div className="mx-5 grow">Loading Van Info</div>;
-
-	// TODO: Move the getNavLinkClasses to util functions file
-	const getNavLinkClasses = ({ isActive }: { isActive: boolean }): string => {
-		const baseClasses = 'text-sm underline-offset-[2px] mr-5';
-
-		return twMerge(
-			classNames(baseClasses, { 'underline font-semibold': isActive })
-		);
-	};
 
 	return (
 		<main className="mx-5 grow mt-7">

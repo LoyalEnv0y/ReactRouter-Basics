@@ -3,6 +3,7 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { useEffect, useState } from 'react';
 import { Van } from '../types';
 import Button from '../components/Button';
+import { capitalize } from '../utils';
 
 const VanShow = () => {
 	const { id } = useParams();
@@ -26,10 +27,6 @@ const VanShow = () => {
 	}, [id]);
 
 	if (!van) return <div className="grow">Fetching wan data</div>;
-
-	const capitalize = (text: string): string => {
-		return text[0].toUpperCase() + text.slice(1);
-	};
 
 	return (
 		<main className="grow px-5 py-3">

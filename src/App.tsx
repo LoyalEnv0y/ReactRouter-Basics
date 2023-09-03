@@ -33,6 +33,13 @@ import HostVanPhotos from './pages/Host/HostVanPhotos';
 	when client is directed to `/vans`. The second element is the show page for
 	Vans. Notice the path value doesn't include the full path because the `/vans`
 	has already been included in the parent route. 
+
+	-------------------------------------- 🏗️ --------------------------------------
+	If you want a certain component to show in each page, you can set a parent
+	route with element attribute set to that component. Any route inside the parent
+	route will be sent as an <Outlet /> to the component specified by parent. For
+	example, below we make a `/host` parent route and give it an element. That 
+	element is shown in the index, income, and reviews pages.  
 */
 const App = () => {
 	return (
@@ -45,22 +52,17 @@ const App = () => {
 					<Route path=":id" element={<VanShow />} />
 				</Route>
 
-				<Route path="/host">
-					<Route element={<HostNav />}>
-						<Route index element={<Host />} />
-						<Route path="income" element={<Income />} />
-						<Route path="reviews" element={<Reviews />} />
+				<Route path="/host" element={<HostNav />}>
+					<Route index element={<Host />} />
+					<Route path="income" element={<Income />} />
+					<Route path="reviews" element={<Reviews />} />
 
-						<Route path="vans">
-							<Route index element={<HostVans />} />
-							<Route path=":id" element={<VanLayout />}>
-								<Route index element={<HostVanShow />} />
-								<Route
-									path="pricing"
-									element={<HostVanPricing />}
-								/>
-								<Route path="photos" element={<HostVanPhotos />}/>
-							</Route>
+					<Route path="vans">
+						<Route index element={<HostVans />} />
+						<Route path=":id" element={<VanLayout />}>
+							<Route index element={<HostVanShow />} />
+							<Route path="pricing" element={<HostVanPricing />} />
+							<Route path="photos" element={<HostVanPhotos />} />
 						</Route>
 					</Route>
 				</Route>

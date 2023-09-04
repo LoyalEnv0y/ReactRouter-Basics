@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Van } from '../types';
 import { capitalize } from '../utils';
+import { getVans } from '../api';
 
 /*
 	-------------------------------------- 🔖 --------------------------------------
@@ -20,6 +21,8 @@ import { capitalize } from '../utils';
 */
 const Vans = () => {
 	const [vans, setVans] = useState<Van[]>([]);
+	const [isLoading, setIsLoading] = useState(true);
+	const [error, setError] = useState('');
 	const [searchParams, setSearchParams] = useSearchParams();
 	const types = useMemo(() => {
 		return searchParams.get('types')?.split(',') || [];
@@ -27,24 +30,25 @@ const Vans = () => {
 
 	// TODO: Do all the data fetching in a API file.
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const resp = await fetch('/api/vans', { method: 'GET' });
-				if (!resp.ok) throw new Error(resp.statusText);
+		const fetchVans = async () => {
+			setIsLoading(true);
 
-				const respJSON = await resp.json();
+			try {
+				const vans = await getVans();
 				const filteredVans = types?.length
-					? respJSON.vans.filter((van: Van) => types.includes(van.type))
-					: respJSON.vans;
+					? vans.filter((van: Van) => types.includes(van.type))
+					: vans;
 
 				setVans(filteredVans);
 			} catch (err) {
-				console.log('Error => ', err);
-				return <div>There was an error</div>;
+				console.log('Error occurred when catching vans => ', err);
+				setError('Error while getting vans. Please refresh page');
+			} finally {
+				setIsLoading(false);
 			}
 		};
 
-		fetchData();
+		fetchVans();
 	}, [types]);
 
 	const updateParamsArray = (key: string, value: string) => {
@@ -124,6 +128,9 @@ const Vans = () => {
 
 		return buttons;
 	};
+
+	if (isLoading) return <main className="grow px-5">Loading Vans..</main>;
+	if (error != '') return <main className="grow px-5">{error}</main>;
 
 	return (
 		<main className="grow self-stretch px-5">

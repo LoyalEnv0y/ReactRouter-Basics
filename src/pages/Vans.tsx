@@ -34,22 +34,6 @@ const Vans = () => {
 		fetchData();
 	}, [types]);
 
-	// const updateActiveTypes = (typeName: string) => {
-	// 	const idx = types.indexOf(typeName);
-	// 	if (idx > -1) {
-	// 		types.splice(idx, 1);
-	// 		if (types.length < 1) {
-	// 			clearTypes();
-	// 			return;
-	// 		}
-	// 	} else {
-	// 		types.push(typeName);
-	// 	}
-
-	// 	searchParams.set('types', types.join(','));
-	// 	setSearchParams(searchParams);
-	// };
-
 	const updateParamsArray = (key: string, value: string) => {
 		const keyArray = searchParams.get(key)?.split(',');
 		if (!keyArray) {
@@ -68,24 +52,20 @@ const Vans = () => {
 		} else {
 			keyArray.push(value);
 		}
-		console.log(keyArray)
+
 		searchParams.set(key, keyArray.join(','));
-		setSearchParams(searchParams);
 	};
 
 	const updateParams = (key: string, value: string | null, isArray?: boolean) => {
 		if (value === null) {
 			searchParams.delete(key);
-			setSearchParams(searchParams);
-			return;
-		}
-
-		if (!isArray) {
+		} else if (!isArray) {
 			searchParams.set(key, value);
-			setSearchParams(searchParams);
 		} else {
 			updateParamsArray(key, value);
 		}
+
+		setSearchParams(searchParams);
 	};
 
 	const getClassesForButton = (typeName: string): string => {

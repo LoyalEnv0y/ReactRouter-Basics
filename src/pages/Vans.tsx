@@ -19,6 +19,7 @@ import { getVans } from '../api';
 	situations where we need to give multiple values to a single parameter (like
 	array), we can separate them with ','s i.e `url/cars?types=lux,simple` etc..
 */
+
 const Vans = () => {
 	const [vans, setVans] = useState<Van[]>([]);
 	const [isLoading, setIsLoading] = useState(true);

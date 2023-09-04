@@ -30,7 +30,7 @@ const VanShow = () => {
 
 	return (
 		<main className="grow px-5 py-3">
-			<Link to={'/vans'} className="">
+			<Link to='..' relative='path' className="">
 				<KeyboardBackspaceIcon
 					sx={{ fontSize: 15 }}
 					className="inline text-gray-400"

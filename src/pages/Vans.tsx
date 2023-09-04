@@ -34,24 +34,58 @@ const Vans = () => {
 		fetchData();
 	}, [types]);
 
-	const updateActiveTypes = (typeName: string) => {
-		const idx = types.indexOf(typeName);
+	// const updateActiveTypes = (typeName: string) => {
+	// 	const idx = types.indexOf(typeName);
+	// 	if (idx > -1) {
+	// 		types.splice(idx, 1);
+	// 		if (types.length < 1) {
+	// 			clearTypes();
+	// 			return;
+	// 		}
+	// 	} else {
+	// 		types.push(typeName);
+	// 	}
+
+	// 	searchParams.set('types', types.join(','));
+	// 	setSearchParams(searchParams);
+	// };
+
+	const updateParamsArray = (key: string, value: string) => {
+		const keyArray = searchParams.get(key)?.split(',');
+		if (!keyArray) {
+			updateParams(key, value, false);
+			return;
+		}
+
+		const idx = keyArray.indexOf(value);
+
 		if (idx > -1) {
-			types.splice(idx, 1);
-			if (types.length < 1) {
-				clearTypes();
+			keyArray.splice(idx, 1);
+			if (keyArray.length < 1) {
+				updateParams(key, null);
 				return;
 			}
 		} else {
-			types.push(typeName);
+			keyArray.push(value);
 		}
-
-		searchParams.set('types', types.join(','));
+		console.log(keyArray)
+		searchParams.set(key, keyArray.join(','));
 		setSearchParams(searchParams);
 	};
 
-	const clearTypes = () => {
-		setSearchParams({});
+	const updateParams = (key: string, value: string | null, isArray?: boolean) => {
+		if (value === null) {
+			searchParams.delete(key);
+			setSearchParams(searchParams);
+			return;
+		}
+
+		if (!isArray) {
+			searchParams.set(key, value);
+			setSearchParams(searchParams);
+		} else {
+			updateParamsArray(key, value);
+		}
 	};
 
 	const getClassesForButton = (typeName: string): string => {
@@ -66,24 +100,24 @@ const Vans = () => {
 				<div className="mb-1">
 					<Button
 						className={getClassesForButton('simple')}
-						onClick={() => updateActiveTypes('simple')}>
+						onClick={() => updateParams('types', 'simple', true)}>
 						Simple
 					</Button>
 					<Button
 						className={getClassesForButton('luxury')}
-						onClick={() => updateActiveTypes('luxury')}>
+						onClick={() => updateParams('types', 'luxury', true)}>
 						Luxury
 					</Button>
 					<Button
 						className={getClassesForButton('rugged')}
-						onClick={() => updateActiveTypes('rugged')}>
+						onClick={() => updateParams('types', 'rugged', true)}>
 						Rugged
 					</Button>
 				</div>
 
 				<button
 					className="text-sm underline underline-offset-[3px]"
-					onClick={clearTypes}>
+					onClick={() => updateParams('types', null)}>
 					Clear Filters
 				</button>
 			</div>

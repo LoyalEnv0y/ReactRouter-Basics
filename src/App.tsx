@@ -13,6 +13,7 @@ import HostVanShow from './pages/Host/HostVanShow';
 import VanLayout from './components/Host/VanLayout';
 import HostVanPricing from './pages/Host/HostVanPricing';
 import HostVanPhotos from './pages/Host/HostVanPhotos';
+import NotFound from './pages/NotFound';
 
 /*
 	-------------------------------------- 🌐 --------------------------------------
@@ -66,6 +67,8 @@ const App = () => {
 						</Route>
 					</Route>
 				</Route>
+
+				<Route path="*" element={<NotFound />} />
 			</Route>
 		</Routes>
 	);

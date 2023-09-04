@@ -139,7 +139,7 @@ const Vans = () => {
 							to={`${van.id}`}
 							className="mb-6 w-[47%] min-w-[110px]"
 							key={van.id}
-							state={searchParams.toString()}
+							state={{ search: `?${searchParams.toString()}` }}
 						>
 							<img
 								src={van.imageUrl}

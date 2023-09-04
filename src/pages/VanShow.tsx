@@ -1,13 +1,26 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { useEffect, useState } from 'react';
 import { Van } from '../types';
 import Button from '../components/Button';
 import { capitalize } from '../utils';
 
+/*
+	-------------------------------------- 📍 --------------------------------------
+	UseLocation is a React Router hook that holds valuable information such as
+	pathname, search parameters, key, and state which can be sent with a Link
+	component. 
+
+	We can use the state property to send in the search parameters from the Van
+	page so that when user clicks on a Van and goes to VanShow page, they can go 
+	back to the same filters. To achieve this write the search params in the path
+	of the link
+*/
 const VanShow = () => {
 	const { id } = useParams();
 	const [van, setVan] = useState<Van>();
+	const location = useLocation();
+	const search: string = location.state?.search || '';
 
 	useEffect(() => {
 		const fetchVan = async () => {
@@ -30,13 +43,20 @@ const VanShow = () => {
 
 	return (
 		<main className="grow px-5 py-3">
-			<Link to=".." relative="path">
+			<Link
+				to={search && search != '?' ? `..${search}` : '..'}
+				relative="path"
+			>
 				<KeyboardBackspaceIcon
 					sx={{ fontSize: 15 }}
 					className="inline text-gray-400"
 				/>
 				<p className="ml-2 inline text-xs underline underline-offset-[3px]">
-					Back to all vans
+					{search && search != '?'
+						? `Back to ${search
+								.slice(search.indexOf('=') + 1)
+								.toUpperCase()} vans`
+						: 'Back to all vans'}
 				</p>
 			</Link>
 

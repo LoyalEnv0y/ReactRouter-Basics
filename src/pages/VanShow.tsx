@@ -51,6 +51,7 @@ const VanShow = () => {
 					sx={{ fontSize: 15 }}
 					className="inline text-gray-400"
 				/>
+				{/* TODO: Fix it for multiple types */}
 				<p className="ml-2 inline text-xs underline underline-offset-[3px]">
 					{search && search != '?'
 						? `Back to ${search

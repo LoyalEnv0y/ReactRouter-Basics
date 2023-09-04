@@ -36,7 +36,8 @@ const VanList = () => {
 				return (
 					<div
 						key={van.id}
-						className="my-2 flex items-center justify-between rounded bg-white p-4">
+						className="my-2 flex items-center justify-between rounded bg-white p-4"
+					>
 						<div className="flex items-center">
 							<img
 								src={van.imageUrl}

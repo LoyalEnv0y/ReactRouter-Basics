@@ -14,7 +14,8 @@ const Host = () => {
 							Income last
 							<Link
 								to="/"
-								className="ml-1 underline underline-offset-[3px]">
+								className="ml-1 underline underline-offset-[3px]"
+							>
 								30 days
 							</Link>
 						</p>

@@ -9,7 +9,8 @@ const Income = () => {
 					Last
 					<Link
 						to="/"
-						className="ml-1 font-semibold underline underline-offset-[3px]">
+						className="ml-1 font-semibold underline underline-offset-[3px]"
+					>
 						30 days
 					</Link>
 				</p>
@@ -30,7 +31,8 @@ const Income = () => {
 						Last
 						<Link
 							to="/"
-							className="ml-1 font-semibold underline underline-offset-[3px]">
+							className="ml-1 font-semibold underline underline-offset-[3px]"
+						>
 							30 days
 						</Link>
 					</p>

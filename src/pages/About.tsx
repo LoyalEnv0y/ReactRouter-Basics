@@ -32,7 +32,8 @@ const About = () => {
 						<Button
 							color="luxury"
 							corner="roundedLG"
-							className="m-0 px-3 py-2">
+							className="m-0 px-3 py-2"
+						>
 							Explore our vans
 						</Button>
 					</Link>

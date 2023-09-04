@@ -5,6 +5,19 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { Van } from '../types';
 import { capitalize } from '../utils';
 
+/*
+	-------------------------------------- 🔖 --------------------------------------
+	To modify and use search parameters i.e `url/cars?type=lux` React Router gives
+	us the useSearchParams hook. This hook returns two values. First is parameters
+	and the second is the setter for that parameter. 
+
+	-------------------------------------- 🔍 --------------------------------------
+	SearchParams given from the hook has some useful methods to update or read the
+	search parameters such as set, get and delete. After changing the parameters,
+	we need to call the setter function to rerender the component. To handle the
+	situations where we need to give multiple values to a single parameter (like
+	array), we can separate them with ','s i.e `url/cars?types=lux,simple` etc..
+*/
 const Vans = () => {
 	const [vans, setVans] = useState<Van[]>([]);
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -80,17 +93,20 @@ const Vans = () => {
 				<div className="mb-1">
 					<Button
 						className={getClassesForButton('simple')}
-						onClick={() => updateParams('types', 'simple', true)}>
+						onClick={() => updateParams('types', 'simple', true)}
+					>
 						Simple
 					</Button>
 					<Button
 						className={getClassesForButton('luxury')}
-						onClick={() => updateParams('types', 'luxury', true)}>
+						onClick={() => updateParams('types', 'luxury', true)}
+					>
 						Luxury
 					</Button>
 					<Button
 						className={getClassesForButton('rugged')}
-						onClick={() => updateParams('types', 'rugged', true)}>
+						onClick={() => updateParams('types', 'rugged', true)}
+					>
 						Rugged
 					</Button>
 				</div>
@@ -98,7 +114,8 @@ const Vans = () => {
 				{searchParams.get('types') && (
 					<button
 						className="text-sm underline underline-offset-[3px]"
-						onClick={() => updateParams('types', null)}>
+						onClick={() => updateParams('types', null)}
+					>
 						Clear Filters
 					</button>
 				)}
@@ -121,7 +138,9 @@ const Vans = () => {
 						<Link
 							to={`${van.id}`}
 							className="mb-6 w-[47%] min-w-[110px]"
-							key={van.id}>
+							key={van.id}
+							state={searchParams.toString()}
+						>
 							<img
 								src={van.imageUrl}
 								alt="van photo"
@@ -138,7 +157,8 @@ const Vans = () => {
 										color={van.type}
 										corner="roundedMD"
 										disabled
-										className="w-24">
+										className="w-24"
+									>
 										{capitalize(van.type)}
 									</Button>
 								</div>

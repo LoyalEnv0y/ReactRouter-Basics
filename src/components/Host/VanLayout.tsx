@@ -37,7 +37,7 @@ const VanLayout = () => {
 	return (
 		<main className="mx-5 mt-7 grow">
 			<section className="mb-5">
-				<Link to='..' className="">
+				<Link to=".." className="">
 					<KeyboardBackspaceIcon
 						sx={{ fontSize: 15 }}
 						className="inline text-gray-400"

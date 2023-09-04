@@ -30,7 +30,7 @@ const VanShow = () => {
 
 	return (
 		<main className="grow px-5 py-3">
-			<Link to='..' relative='path' className="">
+			<Link to=".." relative="path">
 				<KeyboardBackspaceIcon
 					sx={{ fontSize: 15 }}
 					className="inline text-gray-400"
@@ -47,7 +47,8 @@ const VanShow = () => {
 					color={van.type}
 					corner="roundedMD"
 					disabled
-					className="mb-3 px-4 text-sm">
+					className="mb-3 px-4 text-sm"
+				>
 					{capitalize(van.type)}
 				</Button>
 

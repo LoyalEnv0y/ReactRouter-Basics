@@ -95,11 +95,13 @@ const Vans = () => {
 					</Button>
 				</div>
 
-				<button
-					className="text-sm underline underline-offset-[3px]"
-					onClick={() => updateParams('types', null)}>
-					Clear Filters
-				</button>
+				{searchParams.get('types') && (
+					<button
+						className="text-sm underline underline-offset-[3px]"
+						onClick={() => updateParams('types', null)}>
+						Clear Filters
+					</button>
+				)}
 			</div>
 		);
 
@@ -117,7 +119,7 @@ const Vans = () => {
 				{vans.map((van) => {
 					return (
 						<Link
-							to={`/vans/${van.id}`}
+							to={`${van.id}`}
 							className="mb-6 w-[47%] min-w-[110px]"
 							key={van.id}>
 							<img

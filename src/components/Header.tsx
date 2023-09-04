@@ -19,7 +19,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
 	return (
 		<header className={classes}>
 			<section className="w-2/5">
-				<Link to="/" className='flex'>
+				<Link to="/" className="flex">
 					<img
 						className="w-36"
 						src="/images/Vanlife-Logo.png"

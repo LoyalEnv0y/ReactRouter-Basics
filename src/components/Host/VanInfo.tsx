@@ -15,14 +15,14 @@ const VanInfo: FC<VanInfoProps> = ({ van }) => {
 			</div>
 
 			<div className="basis-7/12">
-				<Button color={van.type} disabled className="px-3 text-xs mb-1">
+				<Button color={van.type} disabled className="mb-1 px-3 text-xs">
 					{capitalize(van.type)}
 				</Button>
 
 				<div>
-					<h4 className="font-bold text-lg">{van.name}</h4>
+					<h4 className="text-lg font-bold">{van.name}</h4>
 					<p className="text-xs">
-						<span className='font-bold text-sm'>${van.price}</span>/day
+						<span className="text-sm font-bold">${van.price}</span>/day
 					</p>
 				</div>
 			</div>

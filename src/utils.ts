@@ -1,5 +1,5 @@
-import classNames from "classnames";
-import { twMerge } from "tailwind-merge";
+import classNames from 'classnames';
+import { twMerge } from 'tailwind-merge';
 
 export const capitalize = (text: string): string => {
 	return text[0].toUpperCase() + text.slice(1);

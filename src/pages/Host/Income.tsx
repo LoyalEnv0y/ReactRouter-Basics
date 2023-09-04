@@ -18,15 +18,11 @@ const Income = () => {
 			</section>
 
 			<section className="my-6">
-				<img
-					src="/images/Income-Chart.png"
-					alt=""
-					className=""
-				/>
+				<img src="/images/Income-Chart.png" />
 			</section>
 
 			<section className="mb-10">
-				<div className="mt-4 mb-5 flex items-center justify-between">
+				<div className="mb-5 mt-4 flex items-center justify-between">
 					<h2 className="font-bold leading-none">
 						Your Transactions (3)
 					</h2>

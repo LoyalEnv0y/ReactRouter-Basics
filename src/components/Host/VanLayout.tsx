@@ -1,10 +1,15 @@
-import { Link, NavLink, Outlet, useOutletContext, useParams } from 'react-router-dom';
+import {
+	Link,
+	NavLink,
+	Outlet,
+	useOutletContext,
+	useParams,
+} from 'react-router-dom';
 import VanInfo from './VanInfo';
 import { useEffect, useState } from 'react';
 import { Van } from '../../types';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { getNavLinkClasses } from '../../utils';
-
 
 const VanLayout = () => {
 	const { id } = useParams();
@@ -30,8 +35,8 @@ const VanLayout = () => {
 	if (!van) return <div className="mx-5 grow">Loading Van Info</div>;
 
 	return (
-		<main className="mx-5 grow mt-7">
-			<section className='mb-5'>
+		<main className="mx-5 mt-7 grow">
+			<section className="mb-5">
 				<Link to={'/host/vans'} className="">
 					<KeyboardBackspaceIcon
 						sx={{ fontSize: 15 }}
@@ -43,7 +48,7 @@ const VanLayout = () => {
 				</Link>
 			</section>
 
-			<section className="bg-white p-4 flex flex-col gap-y-4">
+			<section className="flex flex-col gap-y-4 bg-white p-4">
 				<VanInfo van={van} />
 
 				<div>

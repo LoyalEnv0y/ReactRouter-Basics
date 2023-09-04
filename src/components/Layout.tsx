@@ -10,7 +10,7 @@ const Layout = () => {
 	return (
 		<div className="flex min-h-screen w-full flex-col sm:max-w-[600px]">
 			<Header />
-				<Outlet />
+			<Outlet />
 			<Footer />
 		</div>
 	);

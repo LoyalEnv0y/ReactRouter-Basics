@@ -12,7 +12,7 @@ const config = {
   jsxSingleQuote: false,
   trailingComma: "es5",
   bracketSpacing: true,
-  bracketSameLine: true,
+  bracketSameLine: false,
   arrowParens: 'always',
   endOfLine: "crlf"
 };

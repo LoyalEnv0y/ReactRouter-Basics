@@ -3,7 +3,6 @@ import StarIcon from '@mui/icons-material/Star';
 import VanList from '../../components/Host/VanList';
 
 const Host = () => {
-
 	return (
 		<main className="grow">
 			<section className="mt-7 h-56">

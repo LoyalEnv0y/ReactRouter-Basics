@@ -4,11 +4,7 @@ import Button from '../components/Button';
 const About = () => {
 	return (
 		<main className="flex grow flex-col">
-			<img
-				src="/images/Night-Sky-Caravan.png"
-				alt="banner"
-				className=""
-			/>
+			<img src="/images/Night-Sky-Caravan.png" alt="banner" />
 
 			<section className="flex grow flex-col justify-between px-8">
 				<h1 className="my-4 text-2xl font-bold sm:text-3xl">

@@ -80,6 +80,7 @@ const router = createBrowserRouter([
 							{
 								path: ':id',
 								element: <VanLayout />,
+								loader: vanLoader,
 								children: [
 									{ index: true, element: <HostVanShow /> },
 									{

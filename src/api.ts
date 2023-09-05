@@ -3,7 +3,6 @@ import { Van } from './types';
 
 export const getVans = async (): Promise<Van[]> => {
 	const resp = await axios.get('/api/vans');
-	console.log(resp)
 	if (!resp.data.vans)
 		throw {
 			message: 'Failed to get vans data',

@@ -1,10 +1,10 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import Button from '../components/Button';
 import classnames from 'classnames';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useLoaderData, useSearchParams } from 'react-router-dom';
 import { Van } from '../types';
-import { capitalize } from '../utils';
 import { getVans } from '../api';
+import VanCell from '../components/VanCell';
 
 /*
 	-------------------------------------- 🔖 --------------------------------------
@@ -20,37 +20,20 @@ import { getVans } from '../api';
 	array), we can separate them with ','s i.e `url/cars?types=lux,simple` etc..
 */
 
+export const loader = async (): Promise<Van[]> => {
+	return await getVans();
+};
+
 const Vans = () => {
-	const [vans, setVans] = useState<Van[]>([]);
-	const [isLoading, setIsLoading] = useState(true);
-	const [error, setError] = useState('');
 	const [searchParams, setSearchParams] = useSearchParams();
 	const types = useMemo(() => {
 		return searchParams.get('types')?.split(',') || [];
 	}, [searchParams]);
+	let vans = useLoaderData() as Van[];
 
-	// TODO: Do all the data fetching in a API file.
-	useEffect(() => {
-		const fetchVans = async () => {
-			setIsLoading(true);
-
-			try {
-				const vans = await getVans();
-				const filteredVans = types?.length
-					? vans.filter((van: Van) => types.includes(van.type))
-					: vans;
-
-				setVans(filteredVans);
-			} catch (err) {
-				console.log('Error occurred when catching vans => ', err);
-				setError('Error while getting vans. Please refresh page');
-			} finally {
-				setIsLoading(false);
-			}
-		};
-
-		fetchVans();
-	}, [types]);
+	vans = types?.length
+		? vans.filter((van) => types.includes(van.type))
+		: vans;
 
 	const updateParamsArray = (key: string, value: string) => {
 		const keyArray = searchParams.get(key)?.split(',');
@@ -130,9 +113,6 @@ const Vans = () => {
 		return buttons;
 	};
 
-	if (isLoading) return <main className="grow px-5">Loading Vans..</main>;
-	if (error != '') return <main className="grow px-5">{error}</main>;
-
 	return (
 		<main className="grow self-stretch px-5">
 			<section>
@@ -141,46 +121,9 @@ const Vans = () => {
 			</section>
 
 			<section className="my-8 flex flex-wrap justify-between">
-				{vans.map((van) => {
-					return (
-						<Link
-							to={`${van.id}`}
-							className="mb-6 w-[47%] min-w-[110px]"
-							key={van.id}
-							state={{ search: `?${searchParams.toString()}` }}
-						>
-							<img
-								src={van.imageUrl}
-								alt="van photo"
-								className="aspect-square rounded"
-							/>
-
-							<div className="flex justify-between">
-								<div className="flex h-24 w-3/4 flex-col justify-between">
-									<h1 className="mb-1 text-lg font-semibold">
-										{van.name}
-									</h1>
-
-									<Button
-										color={van.type}
-										corner="roundedMD"
-										disabled
-										className="w-24"
-									>
-										{capitalize(van.type)}
-									</Button>
-								</div>
-
-								<div className="w-1/4 text-right">
-									<p className="-mb-1 text-lg font-semibold">
-										${van.price}
-									</p>
-									<span className="block text-xs">/day</span>
-								</div>
-							</div>
-						</Link>
-					);
-				})}
+				{vans.map((van) => (
+					<VanCell key={van.id} van={van} searchParams={searchParams} />
+				))}
 			</section>
 		</main>
 	);

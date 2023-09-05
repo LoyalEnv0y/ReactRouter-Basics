@@ -7,7 +7,7 @@ import {
 
 import Home from './pages/Home';
 import About from './pages/About';
-import Vans from './pages/Vans';
+import Vans, { loader as vansLoader } from './pages/Vans';
 import VanShow from './pages/VanShow';
 import Layout from './components/Layout';
 import Host from './pages/Host/Host';
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
 			{
 				path: '/vans',
 				children: [
-					{ index: true, element: <Vans /> },
+					{ index: true, element: <Vans />, loader: vansLoader },
 					{ path: ':id', element: <VanShow /> },
 				],
 			},

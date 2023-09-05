@@ -1,34 +1,14 @@
-import { useEffect, useState } from 'react';
 import { Van } from '../../types';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+import { getVanById } from '../../api';
+
+export const loader = async () => {
+	const vans = ['1', '2', '3'].map((id) => getVanById(id));
+	return await Promise.all(vans);
+};
 
 const VanList = () => {
-	const [vans, setVans] = useState<Van[]>([]);
-
-	useEffect(() => {
-		const fetchVans = async () => {
-			try {
-				const resp1 = await fetch(`/api/vans/1`);
-				const resp2 = await fetch(`/api/vans/2`);
-				const resp3 = await fetch(`/api/vans/3`);
-				if (!resp1.ok) throw new Error("Couldn't catch van");
-				if (!resp2.ok) throw new Error("Couldn't catch van");
-				if (!resp3.ok) throw new Error("Couldn't catch van");
-
-				const respJson1 = await resp1.json();
-				const respJson2 = await resp2.json();
-				const respJson3 = await resp3.json();
-				setVans([...vans, respJson1.vans, respJson2.vans, respJson3.vans]);
-			} catch (err) {
-				console.log(err);
-			}
-		};
-
-		fetchVans();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
-
-	if (vans.length < 3) return <div className="grow">Loading Vans</div>;
+	const vans = useLoaderData() as Van[];
 
 	return (
 		<div>

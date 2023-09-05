@@ -18,6 +18,8 @@ import HostVanPricing from './pages/Host/HostVanPricing';
 import HostVanPhotos from './pages/Host/HostVanPhotos';
 import NotFound from './pages/NotFound';
 
+import { loader as vanListLoader } from './components/Host/VanList.js';
+
 import '../public/styles/index.css';
 import './mockServer.js';
 
@@ -64,13 +66,17 @@ const router = createBrowserRouter([
 				path: '/host',
 				element: <HostNav />,
 				children: [
-					{ index: true, element: <Host /> },
+					{ index: true, element: <Host />, loader: vanListLoader },
 					{ path: 'income', element: <Income /> },
 					{ path: 'reviews', element: <Reviews /> },
 					{
 						path: 'vans',
 						children: [
-							{ index: true, element: <HostVans /> },
+							{
+								index: true,
+								element: <HostVans />,
+								loader: vanListLoader,
+							},
 							{
 								path: ':id',
 								element: <VanLayout />,

@@ -73,11 +73,13 @@ createServer({
 
 		this.get('/vans', (schema) => {
 			return schema.vans.all();
+			// return new Response(400, {}, { error: "Error fetching data" })
 		});
 
 		this.get('/vans/:id', (schema, request) => {
 			const id = request.params.id;
 			return schema.vans.find(id);
+			// return new Response(400, {}, { error: "Error fetching data" })
 		});
 	},
 });

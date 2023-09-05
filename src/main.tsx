@@ -22,6 +22,7 @@ import { loader as vanListLoader } from './components/Host/VanList.js';
 
 import '../public/styles/index.css';
 import './mockServer.js';
+import Error from './components/Error.js';
 
 /*
 	-------------------------------------- 🌐 --------------------------------------
@@ -57,14 +58,20 @@ const router = createBrowserRouter([
 			{ path: '/about', element: <About /> },
 			{
 				path: '/vans',
+				errorElement: <Error />,
 				children: [
-					{ index: true, element: <Vans />, loader: vansLoader },
+					{
+						index: true,
+						element: <Vans />,
+						loader: vansLoader,
+					},
 					{ path: ':id', element: <VanShow />, loader: vanLoader },
 				],
 			},
 			{
 				path: '/host',
 				element: <HostNav />,
+				errorElement: <Error />,
 				children: [
 					{ index: true, element: <Host />, loader: vanListLoader },
 					{ path: 'income', element: <Income /> },

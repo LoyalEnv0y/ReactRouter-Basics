@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {
-	RouterProvider,
-	createBrowserRouter,
-} from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import Home from './pages/Home';
 import About from './pages/About';
 import Vans, { loader as vansLoader } from './pages/Vans';
-import VanShow from './pages/VanShow';
+import VanShow, { loader as vanLoader } from './pages/VanShow';
 import Layout from './components/Layout';
 import Host from './pages/Host/Host';
 import HostNav from './components/Host/HostNav';
@@ -60,7 +57,7 @@ const router = createBrowserRouter([
 				path: '/vans',
 				children: [
 					{ index: true, element: <Vans />, loader: vansLoader },
-					{ path: ':id', element: <VanShow /> },
+					{ path: ':id', element: <VanShow />, loader: vanLoader },
 				],
 			},
 			{

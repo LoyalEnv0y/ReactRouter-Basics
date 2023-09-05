@@ -17,12 +17,12 @@ import VanLayout from './components/Host/VanLayout';
 import HostVanPricing from './pages/Host/HostVanPricing';
 import HostVanPhotos from './pages/Host/HostVanPhotos';
 import NotFound from './pages/NotFound';
-
+import Error from './components/Error.js';
+import SignIn from './pages/SignIn.js';
 import { loader as vanListLoader } from './components/Host/VanList.js';
 
 import '../public/styles/index.css';
 import './mockServer.js';
-import Error from './components/Error.js';
 
 /*
 	-------------------------------------- 🌐 --------------------------------------
@@ -101,6 +101,7 @@ const router = createBrowserRouter([
 					},
 				],
 			},
+			{ path: 'signIn', element: <SignIn /> },
 			{ path: '*', element: <NotFound /> },
 		],
 	},

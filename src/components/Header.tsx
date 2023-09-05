@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import classnames from 'classnames';
 import { twMerge } from 'tailwind-merge';
 import { getNavLinkClasses } from '../utils';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 
 interface HeaderProps {
 	className?: string;
@@ -29,14 +30,17 @@ const Header: FC<HeaderProps> = ({ className }) => {
 			</section>
 
 			<nav className="flex w-3/5 justify-around">
-				<NavLink to="/about" className={getNavLinkClasses}>
+				<NavLink to="about" className={getNavLinkClasses}>
 					About
 				</NavLink>
-				<NavLink to="/host" className={getNavLinkClasses}>
+				<NavLink to="host" className={getNavLinkClasses}>
 					Host
 				</NavLink>
-				<NavLink to="/vans" className={getNavLinkClasses}>
+				<NavLink to="vans" className={getNavLinkClasses}>
 					Vans
+				</NavLink>
+				<NavLink to="signin" className={getNavLinkClasses}>
+					<AccountCircleOutlinedIcon />
 				</NavLink>
 			</nav>
 		</header>

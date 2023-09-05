@@ -18,6 +18,19 @@ import VanCell from '../components/VanCell';
 	we need to call the setter function to rerender the component. To handle the
 	situations where we need to give multiple values to a single parameter (like
 	array), we can separate them with ','s i.e `url/cars?types=lux,simple` etc..
+
+	-------------------------------------- 📦 --------------------------------------
+	Loaders help us to get data from an api. The loader functions run even before
+	the component is rendered so we do not need to handle the loading state of the
+	data. The loader functions do not have to be in the same file as the component.
+	
+	To get data from a loader use the `useLoaderData` hook. To connect the loaders
+	to components, specify the loader attribute in the route definition. You can
+	look at the main file to see how this is done.
+	
+	If any error occurs in the loader, the error page specified in the route
+	element with the `errorElement` attribute will be rendered instead of the main
+	component.
 */
 
 export const loader = async (): Promise<Van[]> => {

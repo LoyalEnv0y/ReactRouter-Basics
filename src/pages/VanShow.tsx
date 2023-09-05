@@ -1,9 +1,14 @@
-import { Link, useLocation, useParams } from 'react-router-dom';
+import {
+	Link,
+	LoaderFunctionArgs,
+	useLoaderData,
+	useLocation,
+} from 'react-router-dom';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import { useEffect, useState } from 'react';
 import { Van } from '../types';
 import Button from '../components/Button';
 import { capitalize } from '../utils';
+import { getVanById } from '../api';
 
 /*
 	-------------------------------------- 📍 --------------------------------------
@@ -16,28 +21,16 @@ import { capitalize } from '../utils';
 	back to the same filters. To achieve this write the search params in the path
 	of the link
 */
+
+export const loader = async ({ params }: LoaderFunctionArgs) => {
+	if (!params.id) return <div>Error: No Id Found for Van</div>;
+	return await getVanById(params.id);
+};
+
 const VanShow = () => {
-	const { id } = useParams();
-	const [van, setVan] = useState<Van>();
 	const location = useLocation();
 	const search: string = location.state?.search || '';
-
-	useEffect(() => {
-		const fetchVan = async () => {
-			try {
-				const resp = await fetch(`/api/vans/${id}`);
-				if (!resp.ok) throw new Error('Fetching Van Failed');
-
-				const respJSON = await resp.json();
-				setVan(respJSON.vans);
-			} catch (err) {
-				console.log(err);
-				return <div>err.statusMassage</div>;
-			}
-		};
-
-		fetchVan();
-	}, [id]);
+	const van = useLoaderData() as Van;
 
 	if (!van) return <div className="grow">Fetching wan data</div>;
 
@@ -51,12 +44,12 @@ const VanShow = () => {
 					sx={{ fontSize: 15 }}
 					className="inline text-gray-400"
 				/>
-				{/* TODO: Fix it for multiple types */}
+
 				<p className="ml-2 inline text-xs underline underline-offset-[3px]">
 					{search && search != '?'
 						? `Back to ${search
 								.slice(search.indexOf('=') + 1)
-								.toUpperCase()} vans`
+								.toUpperCase().replace(/%2C/g, ', ')} vans`
 						: 'Back to all vans'}
 				</p>
 			</Link>

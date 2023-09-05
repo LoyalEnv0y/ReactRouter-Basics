@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {
-	RouterProvider,
-	createBrowserRouter,
-} from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import Home from './pages/Home';
 import About from './pages/About';
-import Vans from './pages/Vans';
-import VanShow from './pages/VanShow';
+import Vans, { loader as vansLoader } from './pages/Vans';
+import VanShow, { loader as vanLoader } from './pages/VanShow';
 import Layout from './components/Layout';
 import Host from './pages/Host/Host';
 import HostNav from './components/Host/HostNav';
@@ -21,8 +18,11 @@ import HostVanPricing from './pages/Host/HostVanPricing';
 import HostVanPhotos from './pages/Host/HostVanPhotos';
 import NotFound from './pages/NotFound';
 
+import { loader as vanListLoader } from './components/Host/VanList.js';
+
 import '../public/styles/index.css';
 import './mockServer.js';
+import Error from './components/Error.js';
 
 /*
 	-------------------------------------- 🌐 --------------------------------------
@@ -58,25 +58,36 @@ const router = createBrowserRouter([
 			{ path: '/about', element: <About /> },
 			{
 				path: '/vans',
+				errorElement: <Error />,
 				children: [
-					{ index: true, element: <Vans /> },
-					{ path: ':id', element: <VanShow /> },
+					{
+						index: true,
+						element: <Vans />,
+						loader: vansLoader,
+					},
+					{ path: ':id', element: <VanShow />, loader: vanLoader },
 				],
 			},
 			{
 				path: '/host',
 				element: <HostNav />,
+				errorElement: <Error />,
 				children: [
-					{ index: true, element: <Host /> },
+					{ index: true, element: <Host />, loader: vanListLoader },
 					{ path: 'income', element: <Income /> },
 					{ path: 'reviews', element: <Reviews /> },
 					{
 						path: 'vans',
 						children: [
-							{ index: true, element: <HostVans /> },
+							{
+								index: true,
+								element: <HostVans />,
+								loader: vanListLoader,
+							},
 							{
 								path: ':id',
 								element: <VanLayout />,
+								loader: vanLoader,
 								children: [
 									{ index: true, element: <HostVanShow /> },
 									{

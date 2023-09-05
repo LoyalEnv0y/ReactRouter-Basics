@@ -2,35 +2,16 @@ import {
 	Link,
 	NavLink,
 	Outlet,
+	useLoaderData,
 	useOutletContext,
-	useParams,
 } from 'react-router-dom';
 import VanInfo from './VanInfo';
-import { useEffect, useState } from 'react';
 import { Van } from '../../types';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { getNavLinkClasses } from '../../utils';
 
 const VanLayout = () => {
-	const { id } = useParams();
-	const [van, setVan] = useState<Van>();
-
-	useEffect(() => {
-		const fetchVan = async () => {
-			try {
-				const resp = await fetch(`/api/vans/${id}`);
-				if (!resp.ok) throw new Error("Couldn't fetch van data");
-
-				const respJson = await resp.json();
-				setVan(respJson.vans);
-			} catch (err) {
-				console.log(err);
-				return <div>Error while trying to get van data</div>;
-			}
-		};
-
-		fetchVan();
-	}, [id]);
+	const van = useLoaderData() as Van;
 
 	if (!van) return <div className="mx-5 grow">Loading Van Info</div>;
 

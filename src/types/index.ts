@@ -6,3 +6,9 @@ export type Van = {
 	imageUrl: string;
 	type: 'rugged' | 'simple' | 'luxury';
 };
+
+export type AppError = {
+	message: string;
+	status: number;
+	statusText: string;
+};

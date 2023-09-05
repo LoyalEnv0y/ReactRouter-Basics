@@ -7,8 +7,8 @@ const NotFound = () => {
 			<h1 className="mb-7 text-3xl font-bold">
 				Sorry, the page you were looking for was not found.
 			</h1>
-			<Link to='/'>
-				<Button color="luxury" className="py-3 w-full">
+			<Link to="/">
+				<Button color="luxury" className="w-full py-3">
 					Return to home
 				</Button>
 			</Link>

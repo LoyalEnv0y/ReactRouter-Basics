@@ -25,8 +25,8 @@ const Login = () => {
 
 	return (
 		<main className="flex grow flex-col items-center justify-center gap-y-10 px-5">
-			{message && showMessage && (
-				<div className="relative flex w-full justify-center rounded-lg bg-red-200 p-5">
+			<>{message && showMessage && (
+				<><div className="relative flex w-full justify-center rounded-lg bg-red-200 p-5">
 					<h1 className="text-xl font-bold">{message}</h1>
 					<Button
 						color="luxury"
@@ -38,8 +38,8 @@ const Login = () => {
 					>
 						X
 					</Button>
-				</div>
-			)}
+				</div></>
+			)}</>
 
 			<h1 className="text-2xl font-bold sm:text-3xl">
 				Log in to your account

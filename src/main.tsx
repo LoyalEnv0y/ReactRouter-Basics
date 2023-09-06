@@ -1,11 +1,15 @@
+// React
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
+// React Router
 import {
 	LoaderFunctionArgs,
 	RouterProvider,
 	createBrowserRouter,
 } from 'react-router-dom';
 
+// Pages
 import Home from './pages/Home';
 import About from './pages/About';
 import Vans from './pages/Vans';
@@ -24,10 +28,17 @@ import NotFound from './pages/NotFound';
 import Error from './components/Error.js';
 import SignIn from './pages/SignIn.js';
 
+// CSS and MockServer
 import '../public/styles/index.css';
 import './mockServer.js';
 
-import { getAllVansLoader, getThreeVansLoader, getVanByIdLoader } from './loaders/index.js';
+// Loaders
+import {
+	getAllVansLoader,
+	getHostVanLoader,
+	getHostVansLoader,
+	getVanByIdLoader,
+} from './loaders/index.js';
 
 /*
 	-------------------------------------- 🌐 --------------------------------------
@@ -88,7 +99,7 @@ const router = createBrowserRouter([
 						element: <Host />,
 						loader: async () => {
 							console.log('here /host/');
-							return getThreeVansLoader();
+							return getHostVansLoader();
 						},
 					},
 					{
@@ -119,7 +130,7 @@ const router = createBrowserRouter([
 								element: <HostVans />,
 								loader: async () => {
 									console.log('here /host/vans/');
-									return getThreeVansLoader();
+									return getHostVansLoader();
 								},
 							},
 							{
@@ -127,7 +138,7 @@ const router = createBrowserRouter([
 								element: <VanLayout />,
 								loader: async ({ params }) => {
 									console.log('here /host/vans/:id');
-									return getVanByIdLoader({
+									return getHostVanLoader({
 										params,
 									} as LoaderFunctionArgs);
 								},

@@ -22,3 +22,27 @@ export const getVanById = async (id: string): Promise<Van> => {
 		};
 	return resp.data.vans;
 };
+
+export const getHostVans = async (): Promise<Van> => {
+	const resp = await axios.get('/api/host/vans');
+	if (!resp.data.vans)
+		throw {
+			message: 'Failed to get vans data for the user',
+			statusText: resp.statusText,
+			status: resp.status,
+		};
+
+	return resp.data.vans
+};
+
+export const getHostVanById = async (id: string): Promise<Van> => {
+	const resp = await axios.get(`/api/host/vans/${id}`);
+	if (!resp.data.vans)
+		throw {
+			message: 'Failed to get van data for the user',
+			statusText: resp.statusText,
+			status: resp.status,
+		};
+
+	return resp.data.vans;
+};

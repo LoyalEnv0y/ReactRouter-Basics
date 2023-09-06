@@ -7,6 +7,7 @@ import {
 	LoaderFunctionArgs,
 	RouterProvider,
 	createBrowserRouter,
+	redirect,
 } from 'react-router-dom';
 
 // Pages
@@ -26,7 +27,7 @@ import HostVanPricing from './pages/Host/HostVanPricing';
 import HostVanPhotos from './pages/Host/HostVanPhotos';
 import NotFound from './pages/NotFound';
 import Error from './components/Error.js';
-import SignIn from './pages/SignIn.js';
+import Login from './pages/Login.js';
 
 // CSS and MockServer
 import '../public/styles/index.css';
@@ -39,6 +40,9 @@ import {
 	getHostVansLoader,
 	getVanByIdLoader,
 } from './loaders/index.js';
+
+// Utils
+import { requireAuth } from './utils/index.js';
 
 /*
 	-------------------------------------- 🌐 --------------------------------------
@@ -70,10 +74,13 @@ const router = createBrowserRouter([
 		path: '/',
 		element: <Layout />,
 		children: [
-			{ path: '/', element: <Home /> },
-			{ path: '/about', element: <About /> },
+			{ index: true, element: <Home /> },
 			{
-				path: '/vans',
+				path: 'about',
+				element: <About />,
+			},
+			{
+				path: 'vans',
 				errorElement: <Error />,
 				children: [
 					{
@@ -85,12 +92,12 @@ const router = createBrowserRouter([
 				],
 			},
 			{
-				path: '/host',
+				path: 'host',
 				element: <HostNav />,
 				errorElement: <Error />,
 				loader: async () => {
 					console.log('here /host');
-					return null;
+					return await requireAuth();
 				},
 
 				children: [
@@ -107,7 +114,7 @@ const router = createBrowserRouter([
 						element: <Income />,
 						loader: async () => {
 							console.log('here /host/income');
-							return null;
+							return await requireAuth();
 						},
 					},
 					{
@@ -115,14 +122,14 @@ const router = createBrowserRouter([
 						element: <Reviews />,
 						loader: async () => {
 							console.log('here /host/reviews');
-							return null;
+							return await requireAuth();
 						},
 					},
 					{
 						path: 'vans',
 						loader: async () => {
 							console.log('here /host/vans');
-							return null;
+							return await requireAuth();
 						},
 						children: [
 							{
@@ -148,7 +155,7 @@ const router = createBrowserRouter([
 										element: <HostVanShow />,
 										loader: async () => {
 											console.log('here /host/vans/:id/');
-											return null;
+											return await requireAuth();
 										},
 									},
 									{
@@ -158,7 +165,7 @@ const router = createBrowserRouter([
 											console.log(
 												'here /host/vans/:id/pricing'
 											);
-											return null;
+											return await requireAuth();
 										},
 									},
 									{
@@ -168,7 +175,7 @@ const router = createBrowserRouter([
 											console.log(
 												'here /host/vans/:id/photos'
 											);
-											return null;
+											return await requireAuth();
 										},
 									},
 								],
@@ -177,14 +184,7 @@ const router = createBrowserRouter([
 					},
 				],
 			},
-			{
-				path: 'signIn',
-				element: <SignIn />,
-				loader: async () => {
-					console.log('here /signin');
-					return null;
-				},
-			},
+			{ path: 'login', element: <Login /> },
 			{ path: '*', element: <NotFound /> },
 		],
 	},

@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { redirect } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
 
 export const capitalize = (text: string): string => {
@@ -12,3 +13,23 @@ export const getNavLinkClasses = ({ isActive }: { isActive: boolean }): string =
 		classNames(baseClasses, { 'underline font-semibold': isActive })
 	);
 };
+
+export async function requireAuth() {
+	const isLoggedIn = true;
+
+	if (!isLoggedIn) {
+		/*
+			The below code should only be `throw redirect('/login') or return redirect('/login')`
+			but mirage.js has problems with body being empty. So as a workaround we need to manually
+			add the body. You do not need to do this in normal servers.
+
+			This comes with the type issue of reassigning the body. We can ignore this error for now.
+		*/
+
+		const response = redirect('/login');
+		response.body = true; 
+		throw response;
+	}
+
+	return null;
+}

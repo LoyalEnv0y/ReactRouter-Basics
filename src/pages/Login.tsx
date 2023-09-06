@@ -7,7 +7,7 @@ const initialFormData = {
 	password: '',
 };
 
-const SignIn = () => {
+const Login = () => {
 	const [formData, setFormData] = useState(initialFormData);
 
 	const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
@@ -24,7 +24,7 @@ const SignIn = () => {
 	return (
 		<main className="flex grow flex-col items-center justify-center gap-y-10 px-5">
 			<h1 className="text-2xl font-bold sm:text-3xl">
-				Sign in to your account
+				Log in to your account
 			</h1>
 
 			<form
@@ -49,7 +49,7 @@ const SignIn = () => {
 				/>
 
 				<Button color="primary" className="mt-5 py-3 font-semibold">
-					Sign in
+					Log in
 				</Button>
 			</form>
 
@@ -63,4 +63,4 @@ const SignIn = () => {
 	);
 };
 
-export default SignIn;
+export default Login;

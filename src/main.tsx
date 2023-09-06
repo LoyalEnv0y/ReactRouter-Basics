@@ -8,8 +8,8 @@ import {
 
 import Home from './pages/Home';
 import About from './pages/About';
-import Vans, { loader as vansLoader } from './pages/Vans';
-import VanShow, { loader as vanLoader } from './pages/VanShow';
+import Vans from './pages/Vans';
+import VanShow from './pages/VanShow';
 import Layout from './components/Layout';
 import Host from './pages/Host/Host';
 import HostNav from './components/Host/HostNav';
@@ -23,10 +23,11 @@ import HostVanPhotos from './pages/Host/HostVanPhotos';
 import NotFound from './pages/NotFound';
 import Error from './components/Error.js';
 import SignIn from './pages/SignIn.js';
-import { loader as vanListLoader } from './components/Host/VanList.js';
 
 import '../public/styles/index.css';
 import './mockServer.js';
+
+import { getAllVansLoader, getThreeVansLoader, getVanByIdLoader } from './loaders/index.js';
 
 /*
 	-------------------------------------- 🌐 --------------------------------------
@@ -67,9 +68,9 @@ const router = createBrowserRouter([
 					{
 						index: true,
 						element: <Vans />,
-						loader: vansLoader,
+						loader: getAllVansLoader,
 					},
-					{ path: ':id', element: <VanShow />, loader: vanLoader },
+					{ path: ':id', element: <VanShow />, loader: getVanByIdLoader },
 				],
 			},
 			{
@@ -87,7 +88,7 @@ const router = createBrowserRouter([
 						element: <Host />,
 						loader: async () => {
 							console.log('here /host/');
-							return vanListLoader();
+							return getThreeVansLoader();
 						},
 					},
 					{
@@ -118,7 +119,7 @@ const router = createBrowserRouter([
 								element: <HostVans />,
 								loader: async () => {
 									console.log('here /host/vans/');
-									return vanListLoader();
+									return getThreeVansLoader();
 								},
 							},
 							{
@@ -126,7 +127,7 @@ const router = createBrowserRouter([
 								element: <VanLayout />,
 								loader: async ({ params }) => {
 									console.log('here /host/vans/:id');
-									return vanLoader({
+									return getVanByIdLoader({
 										params,
 									} as LoaderFunctionArgs);
 								},

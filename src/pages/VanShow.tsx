@@ -1,14 +1,8 @@
-import {
-	Link,
-	LoaderFunctionArgs,
-	useLoaderData,
-	useLocation,
-} from 'react-router-dom';
+import { Link, useLoaderData, useLocation } from 'react-router-dom';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { Van } from '../types';
 import Button from '../components/Button';
 import { capitalize } from '../utils';
-import { getVanById } from '../api';
 
 /*
 	-------------------------------------- 📍 --------------------------------------
@@ -21,11 +15,6 @@ import { getVanById } from '../api';
 	back to the same filters. To achieve this write the search params in the path
 	of the link
 */
-
-export const loader = async ({ params }: LoaderFunctionArgs) => {
-	if (!params.id) return <div>Error: No Id Found for Van</div>;
-	return await getVanById(params.id);
-};
 
 const VanShow = () => {
 	const location = useLocation();
@@ -49,7 +38,8 @@ const VanShow = () => {
 					{search && search != '?'
 						? `Back to ${search
 								.slice(search.indexOf('=') + 1)
-								.toUpperCase().replace(/%2C/g, ', ')} vans`
+								.toUpperCase()
+								.replace(/%2C/g, ', ')} vans`
 						: 'Back to all vans'}
 				</p>
 			</Link>

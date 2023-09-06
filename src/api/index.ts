@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Van } from './types';
+import { Van } from '../types';
 
 export const getVans = async (): Promise<Van[]> => {
 	const resp = await axios.get('/api/vans');

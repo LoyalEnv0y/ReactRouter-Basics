@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import {
+	LoaderFunctionArgs,
+	RouterProvider,
+	createBrowserRouter,
+} from 'react-router-dom';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -72,36 +76,103 @@ const router = createBrowserRouter([
 				path: '/host',
 				element: <HostNav />,
 				errorElement: <Error />,
+				loader: async () => {
+					console.log('here /host');
+					return null;
+				},
+
 				children: [
-					{ index: true, element: <Host />, loader: vanListLoader },
-					{ path: 'income', element: <Income /> },
-					{ path: 'reviews', element: <Reviews /> },
+					{
+						index: true,
+						element: <Host />,
+						loader: async () => {
+							console.log('here /host/');
+							return vanListLoader();
+						},
+					},
+					{
+						path: 'income',
+						element: <Income />,
+						loader: async () => {
+							console.log('here /host/income');
+							return null;
+						},
+					},
+					{
+						path: 'reviews',
+						element: <Reviews />,
+						loader: async () => {
+							console.log('here /host/reviews');
+							return null;
+						},
+					},
 					{
 						path: 'vans',
+						loader: async () => {
+							console.log('here /host/vans');
+							return null;
+						},
 						children: [
 							{
 								index: true,
 								element: <HostVans />,
-								loader: vanListLoader,
+								loader: async () => {
+									console.log('here /host/vans/');
+									return vanListLoader();
+								},
 							},
 							{
 								path: ':id',
 								element: <VanLayout />,
-								loader: vanLoader,
+								loader: async ({ params }) => {
+									console.log('here /host/vans/:id');
+									return vanLoader({
+										params,
+									} as LoaderFunctionArgs);
+								},
 								children: [
-									{ index: true, element: <HostVanShow /> },
+									{
+										index: true,
+										element: <HostVanShow />,
+										loader: async () => {
+											console.log('here /host/vans/:id/');
+											return null;
+										},
+									},
 									{
 										path: 'pricing',
 										element: <HostVanPricing />,
+										loader: async () => {
+											console.log(
+												'here /host/vans/:id/pricing'
+											);
+											return null;
+										},
 									},
-									{ path: 'photos', element: <HostVanPhotos /> },
+									{
+										path: 'photos',
+										element: <HostVanPhotos />,
+										loader: async () => {
+											console.log(
+												'here /host/vans/:id/photos'
+											);
+											return null;
+										},
+									},
 								],
 							},
 						],
 					},
 				],
 			},
-			{ path: 'signIn', element: <SignIn /> },
+			{
+				path: 'signIn',
+				element: <SignIn />,
+				loader: async () => {
+					console.log('here /signin');
+					return null;
+				},
+			},
 			{ path: '*', element: <NotFound /> },
 		],
 	},

@@ -3,7 +3,6 @@ import Button from '../components/Button';
 import classnames from 'classnames';
 import { useLoaderData, useSearchParams } from 'react-router-dom';
 import { Van } from '../types';
-import { getVans } from '../api';
 import VanCell from '../components/VanCell';
 
 /*
@@ -23,6 +22,8 @@ import VanCell from '../components/VanCell';
 	Loaders help us to get data from an api. The loader functions run even before
 	the component is rendered so we do not need to handle the loading state of the
 	data. The loader functions do not have to be in the same file as the component.
+	To see where the loaders are located, look at the loaders/index file in src
+	folder.
 	
 	To get data from a loader use the `useLoaderData` hook. To connect the loaders
 	to components, specify the loader attribute in the route definition. You can
@@ -33,10 +34,6 @@ import VanCell from '../components/VanCell';
 	component.
 */
 
-export const loader = async (): Promise<Van[]> => {
-	return await getVans();
-};
-
 const Vans = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const types = useMemo(() => {
@@ -44,9 +41,7 @@ const Vans = () => {
 	}, [searchParams]);
 	let vans = useLoaderData() as Van[];
 
-	vans = types?.length
-		? vans.filter((van) => types.includes(van.type))
-		: vans;
+	vans = types?.length ? vans.filter((van) => types.includes(van.type)) : vans;
 
 	const updateParamsArray = (key: string, value: string) => {
 		const keyArray = searchParams.get(key)?.split(',');

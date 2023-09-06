@@ -39,7 +39,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
 				<NavLink to="vans" className={getNavLinkClasses}>
 					Vans
 				</NavLink>
-				<NavLink to="signin" className={getNavLinkClasses}>
+				<NavLink to="login" className={getNavLinkClasses}>
 					<AccountCircleOutlinedIcon />
 				</NavLink>
 			</nav>

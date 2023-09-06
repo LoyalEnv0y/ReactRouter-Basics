@@ -1,11 +1,5 @@
 import { Van } from '../../types';
 import { Link, useLoaderData } from 'react-router-dom';
-import { getVanById } from '../../api';
-
-export const loader = async () => {
-	const vans = ['1', '2', '3'].map((id) => getVanById(id));
-	return await Promise.all(vans);
-};
 
 const VanList = () => {
 	const vans = useLoaderData() as Van[];

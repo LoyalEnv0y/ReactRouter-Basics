@@ -1,11 +1,20 @@
+// React
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
+// React Router
+import {
+	LoaderFunctionArgs,
+	RouterProvider,
+	createBrowserRouter,
+	redirect,
+} from 'react-router-dom';
+
+// Pages
 import Home from './pages/Home';
 import About from './pages/About';
-import Vans, { loader as vansLoader } from './pages/Vans';
-import VanShow, { loader as vanLoader } from './pages/VanShow';
+import Vans from './pages/Vans';
+import VanShow from './pages/VanShow';
 import Layout from './components/Layout';
 import Host from './pages/Host/Host';
 import HostNav from './components/Host/HostNav';
@@ -18,11 +27,23 @@ import HostVanPricing from './pages/Host/HostVanPricing';
 import HostVanPhotos from './pages/Host/HostVanPhotos';
 import NotFound from './pages/NotFound';
 import Error from './components/Error.js';
-import SignIn from './pages/SignIn.js';
-import { loader as vanListLoader } from './components/Host/VanList.js';
+import Login from './pages/Login.js';
 
+// CSS and MockServer
 import '../public/styles/index.css';
 import './mockServer.js';
+
+// Loaders
+import {
+	getAllVansLoader,
+	getHostVanLoader,
+	getHostVansLoader,
+	getParamsLoader,
+	getVanByIdLoader,
+} from './loaders/index.js';
+
+// Utils
+import { requireAuth } from './utils/index.js';
 
 /*
 	-------------------------------------- 🌐 --------------------------------------
@@ -54,54 +75,117 @@ const router = createBrowserRouter([
 		path: '/',
 		element: <Layout />,
 		children: [
-			{ path: '/', element: <Home /> },
-			{ path: '/about', element: <About /> },
+			{ index: true, element: <Home /> },
 			{
-				path: '/vans',
+				path: 'about',
+				element: <About />,
+			},
+			{
+				path: 'vans',
 				errorElement: <Error />,
 				children: [
 					{
 						index: true,
 						element: <Vans />,
-						loader: vansLoader,
+						loader: getAllVansLoader,
 					},
-					{ path: ':id', element: <VanShow />, loader: vanLoader },
+					{ path: ':id', element: <VanShow />, loader: getVanByIdLoader },
 				],
 			},
 			{
-				path: '/host',
+				path: 'host',
 				element: <HostNav />,
 				errorElement: <Error />,
+				loader: async () => {
+					console.log('here /host');
+					return await requireAuth();
+				},
+
 				children: [
-					{ index: true, element: <Host />, loader: vanListLoader },
-					{ path: 'income', element: <Income /> },
-					{ path: 'reviews', element: <Reviews /> },
+					{
+						index: true,
+						element: <Host />,
+						loader: async () => {
+							console.log('here /host/');
+							return getHostVansLoader();
+						},
+					},
+					{
+						path: 'income',
+						element: <Income />,
+						loader: async () => {
+							console.log('here /host/income');
+							return await requireAuth();
+						},
+					},
+					{
+						path: 'reviews',
+						element: <Reviews />,
+						loader: async () => {
+							console.log('here /host/reviews');
+							return await requireAuth();
+						},
+					},
 					{
 						path: 'vans',
+						loader: async () => {
+							console.log('here /host/vans');
+							return await requireAuth();
+						},
 						children: [
 							{
 								index: true,
 								element: <HostVans />,
-								loader: vanListLoader,
+								loader: async () => {
+									console.log('here /host/vans/');
+									return getHostVansLoader();
+								},
 							},
 							{
 								path: ':id',
 								element: <VanLayout />,
-								loader: vanLoader,
+								loader: async ({ params }) => {
+									console.log('here /host/vans/:id');
+									return getHostVanLoader({
+										params,
+									} as LoaderFunctionArgs);
+								},
 								children: [
-									{ index: true, element: <HostVanShow /> },
+									{
+										index: true,
+										element: <HostVanShow />,
+										loader: async () => {
+											console.log('here /host/vans/:id/');
+											return await requireAuth();
+										},
+									},
 									{
 										path: 'pricing',
 										element: <HostVanPricing />,
+										loader: async () => {
+											console.log(
+												'here /host/vans/:id/pricing'
+											);
+											return await requireAuth();
+										},
 									},
-									{ path: 'photos', element: <HostVanPhotos /> },
+									{
+										path: 'photos',
+										element: <HostVanPhotos />,
+										loader: async () => {
+											console.log(
+												'here /host/vans/:id/photos'
+											);
+											return await requireAuth();
+										},
+									},
 								],
 							},
 						],
 					},
 				],
 			},
-			{ path: 'signIn', element: <SignIn /> },
+			{ path: 'login', element: <Login />, loader: getParamsLoader },
 			{ path: '*', element: <NotFound /> },
 		],
 	},

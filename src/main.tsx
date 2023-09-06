@@ -38,6 +38,7 @@ import {
 	getAllVansLoader,
 	getHostVanLoader,
 	getHostVansLoader,
+	getParamsLoader,
 	getVanByIdLoader,
 } from './loaders/index.js';
 
@@ -184,7 +185,7 @@ const router = createBrowserRouter([
 					},
 				],
 			},
-			{ path: 'login', element: <Login /> },
+			{ path: 'login', element: <Login />, loader: getParamsLoader },
 			{ path: '*', element: <NotFound /> },
 		],
 	},

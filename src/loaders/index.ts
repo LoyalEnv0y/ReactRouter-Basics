@@ -22,3 +22,7 @@ export const getHostVanLoader = async ({ params }: LoaderFunctionArgs) => {
 	await requireAuth();
 	return await getHostVanById(params.id);
 };
+
+export const getParamsLoader = async ({ request }: LoaderFunctionArgs) => {
+	return new URL(request.url).searchParams.get('message');
+};

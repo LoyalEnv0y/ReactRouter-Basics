@@ -15,7 +15,7 @@ export const getNavLinkClasses = ({ isActive }: { isActive: boolean }): string =
 };
 
 export async function requireAuth() {
-	const isLoggedIn = true;
+	const isLoggedIn = false;
 
 	if (!isLoggedIn) {
 		/*
@@ -26,7 +26,7 @@ export async function requireAuth() {
 			This comes with the type issue of reassigning the body. We can ignore this error for now.
 		*/
 
-		const response = redirect('/login');
+		const response = redirect('/login?message=You must be logged in');
 		response.body = true; 
 		throw response;
 	}

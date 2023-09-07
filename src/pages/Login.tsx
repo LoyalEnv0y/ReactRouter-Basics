@@ -1,6 +1,7 @@
 import { Link, useLoaderData } from 'react-router-dom';
 import Button from '../components/Button';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { loginUser } from '../api';
 
 const initialFormData = {
 	email: '',
@@ -17,9 +18,10 @@ const Login = () => {
 		setFormData({ ...formData, [name]: value });
 	};
 
-	const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (evt: FormEvent<HTMLFormElement>) => {
 		evt.preventDefault();
-		console.log(formData);
+		const resp = await loginUser(formData);
+		console.log(resp);
 		setFormData(initialFormData);
 	};
 

@@ -12,3 +12,8 @@ export type AppError = {
 	status: number;
 	statusText: string;
 };
+
+export type LoginCredentials = {
+	email: string;
+	password: string;
+};

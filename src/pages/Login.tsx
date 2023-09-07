@@ -25,21 +25,25 @@ const Login = () => {
 
 	return (
 		<main className="flex grow flex-col items-center justify-center gap-y-10 px-5">
-			<>{message && showMessage && (
-				<><div className="relative flex w-full justify-center rounded-lg bg-red-200 p-5">
-					<h1 className="text-xl font-bold">{message}</h1>
-					<Button
-						color="luxury"
-						corner="roundedLG"
-						className="absolute right-1 top-1 h-min px-2 leading-none opacity-80 hover:opacity-100 active:scale-100"
-						onClick={() => {
-							setShowMessage(false);
-						}}
-					>
-						X
-					</Button>
-				</div></>
-			)}</>
+			<>
+				{message && showMessage && (
+					<div className="relative flex w-full justify-center rounded-lg bg-red-200 p-5">
+						<h1 className="text-xl font-bold">
+							<>{message}</>
+						</h1>
+						<Button
+							color="luxury"
+							corner="roundedLG"
+							className="absolute right-1 top-1 h-min px-2 leading-none opacity-80 hover:opacity-100 active:scale-100"
+							onClick={() => {
+								setShowMessage(false);
+							}}
+						>
+							X
+						</Button>
+					</div>
+				)}
+			</>
 
 			<h1 className="text-2xl font-bold sm:text-3xl">
 				Log in to your account

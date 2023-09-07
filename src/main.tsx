@@ -7,7 +7,6 @@ import {
 	LoaderFunctionArgs,
 	RouterProvider,
 	createBrowserRouter,
-	redirect,
 } from 'react-router-dom';
 
 // Pages

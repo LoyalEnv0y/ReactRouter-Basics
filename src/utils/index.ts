@@ -15,7 +15,7 @@ export const getNavLinkClasses = ({ isActive }: { isActive: boolean }): string =
 };
 
 export async function requireAuth() {
-	const isLoggedIn = false;
+	const isLoggedIn = true;
 
 	if (!isLoggedIn) {
 		/*
